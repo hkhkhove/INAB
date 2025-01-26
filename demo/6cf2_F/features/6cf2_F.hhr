@@ -1,0 +1,1310 @@
+Query         6cf2_F
+Match_columns 57
+No_of_seqs    454 out of 845
+Neff          3.5411
+Searched_HMMs 253
+Date          Sun Dec  8 13:43:34 2024
+Command       ./lib/hhblits -i /home2/hzeng/data/NABP/NABP6158_feats/6cf2_F.fasta -d /home2/public/database/UniRef30_2023_02/UniRef30_2023_02 -ohhm /home2/hzeng/data/NABP/NABP6158_feats/6cf2_F.hhm -oa3m /home2/hzeng/data/NABP/NABP6158_feats/6cf2_F.a3m -cpu 8 -v 0 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 UniRef100_A0A1I9J567 Protein R  99.9 2.7E-32   6E-38  182.5   0.0   57    1-57     12-68  (115)
+  2 UniRef100_A0A060GNM7 Protein R  99.9 3.9E-32 8.2E-38  184.4   0.0   57    1-57     10-66  (129)
+  3 UniRef100_A0A023HI34 Protein R  99.9 6.7E-32 1.5E-37  186.4   0.0   57    1-57     13-69  (147)
+  4 UniRef100_A0A0A0UZP9 Protein R  99.9 1.9E-31 3.9E-37  180.5   0.0   57    1-57     10-66  (126)
+  5 UniRef100_A0A140ECS3 Protein R  99.9 1.8E-30 4.4E-36  176.0   0.0   56    2-57     14-69  (126)
+  6 UniRef100_D6NXC9 Protein Rev (  99.9 8.3E-28 1.7E-33  147.6   0.0   53    1-53     10-62  (62)
+  7 UniRef100_C7BB92 Protein Rev (  99.8 4.7E-25   1E-30  149.5   0.0   57    1-57      7-63  (121)
+  8 UniRef100_A0A076V4A1 Protein N  99.8 1.1E-23 2.1E-29  153.6   0.0   57    1-57     10-66  (235)
+  9 UniRef100_A0A075VP85 Protein R  99.8 2.1E-23   5E-29  139.7   0.0   53    1-53      8-60  (109)
+ 10 UniRef100_A0A193BL97 Protein R  99.8   4E-23 8.7E-29  120.2   0.0   42   14-55      2-43  (43)
+ 11 UniRef100_H6D403 Protein Rev n  99.7 1.6E-20 3.8E-26  132.8   0.0   57    1-57     10-70  (161)
+ 12 UniRef100_A4UDF8 Protein Rev n  99.7   2E-20 4.2E-26  128.6   0.0   57    1-57      9-76  (128)
+ 13 UniRef100_D6NXQ8 Protein Rev n  99.6 5.6E-19   1E-24  118.2   0.0   51    1-51     10-60  (106)
+ 14 UniRef100_A0A0H4LW91 Protein R  99.6 8.4E-19 1.6E-24  116.3   0.0   40   18-57      1-40  (97)
+ 15 UniRef100_A0A1L4CV54 Protein R  99.5 1.3E-17 2.7E-23  119.4   0.0   53    1-53      6-58  (171)
+ 16 UniRef100_E1ANU3 Protein Rev n  99.5 5.6E-17 1.1E-22  109.2   0.0   52    1-52      8-59  (104)
+ 17 UniRef100_A0A1Z3GT47 Protein R  99.5 1.7E-16 3.2E-22  108.2   0.0   56    1-57     12-67  (117)
+ 18 UniRef100_A0A059VQR2 Protein R  99.4 3.5E-16   7E-22   91.3   0.0   32    1-32     10-41  (41)
+ 19 UniRef100_Q4PTD9 Protein Tat n  99.4 3.8E-16 7.4E-22  111.6   0.0   41   17-57     73-113 (166)
+ 20 UniRef100_A0A075VQD4 Protein R  99.4 6.5E-16 1.2E-21  107.3   0.0   53    1-53      8-60  (134)
+ 21 UniRef100_A0A0K1YQG2 Protein R  99.4 7.1E-16 1.3E-21  104.3   0.0   39    1-39      4-42  (109)
+ 22 UniRef100_Q8JAG7 Protein Rev n  99.4 2.9E-15 5.6E-21  104.5   0.0   56    2-57     14-80  (135)
+ 23 UniRef100_Q88071 Protein Rev n  99.3 7.2E-15 1.3E-20  104.4   0.0   53    1-53     58-110 (157)
+ 24 UniRef100_C7T4I5 Protein Rev (  99.2 4.1E-14 8.4E-20   94.3   0.0   40   18-57      1-40  (92)
+ 25 UniRef100_D9N3W9 Protein Rev (  99.2 1.6E-13 3.3E-19   93.0   0.0   49    1-54      8-56  (102)
+ 26 UniRef100_Q02839 Protein Rev n  98.9 5.4E-12 9.9E-18   89.7   0.0   51    4-54      8-58  (147)
+ 27 UniRef100_UPI0021F91F6E RevCC   98.9 1.5E-11 2.8E-17   83.1   0.0   32   13-44     35-66  (98)
+ 28 UniRef100_A0A1P8NRQ9 Protein R  98.7 8.1E-11 1.7E-16   77.7   0.0   55    1-57     10-64  (80)
+ 29 UniRef100_Q993M7 Protein Rev (  98.7 8.5E-11 1.7E-16   77.3   0.0   38   18-55      1-38  (78)
+ 30 UniRef100_J7FE45 Protein Rev (  98.7 1.5E-10 2.7E-16   79.5   0.0   40   18-57      1-40  (107)
+ 31 UniRef100_A0A140ECP8 Protein R  98.0 9.8E-08 1.8E-13   64.6   0.0   24    1-24     10-33  (87)
+ 32 UniRef100_Q9JH74 Protein Tat n  97.7 1.2E-06 2.2E-12   63.2   0.0   41   16-56     75-115 (132)
+ 33 UniRef100_Q4PTD8 Protein Rev n  97.4 7.7E-06 1.4E-11   57.9   0.0   27    1-27     10-36  (109)
+ 34 UniRef100_A0A0C5GZX8 Protein R  97.2 1.7E-05 3.4E-11   44.2   0.0   16    1-16     10-25  (25)
+ 35 UniRef100_Q905D9 Rev protein (  97.2   2E-05 3.9E-11   41.6   0.0   16    1-16      4-19  (19)
+ 36 UniRef100_Q905K7 Rev protein (  97.2 2.3E-05 4.2E-11   41.3   0.0   16    1-16      4-19  (19)
+ 37 UniRef100_A0A097KZA8 Protein R  97.0 3.8E-05 7.9E-11   42.9   0.0   16    1-16     10-25  (25)
+ 38 UniRef100_A0A097KYQ5 Protein R  97.0 5.5E-05 1.1E-10   42.7   0.0   16    1-16     10-25  (26)
+ 39 UniRef100_Q905E3 Rev protein (  96.9 6.7E-05 1.3E-10   39.8   0.0   16    1-16      4-19  (19)
+ 40 UniRef100_Q905F9 Rev protein (  96.9   8E-05 1.5E-10   39.5   0.0   16    1-16      4-19  (19)
+ 41 UniRef100_A0A0C5GPD3 Protein R  96.9 9.3E-05 1.8E-10   41.8   0.0   16    1-16     10-25  (26)
+ 42 UniRef100_A0A0C5GZ34 Rev prote  96.8 0.00013 2.6E-10   41.0   0.0   16    1-16     10-25  (25)
+ 43 UniRef100_A0A0C5GNZ7 Protein R  96.5 0.00037 7.1E-10   38.9   0.0   16    1-16      9-24  (24)
+ 44 UniRef100_Q90RF3 Rev protein (  96.5 0.00044 8.1E-10   36.9   0.0   16    1-16      4-19  (19)
+ 45 UniRef100_A0A0B5GP40 Protein R  96.5 0.00047 9.3E-10   38.9   0.0   16    1-16     10-25  (25)
+ 46 UniRef100_A0A076V4W4 Protein R  96.4 0.00054 1.1E-09   39.8   0.0   19    1-19     10-28  (29)
+ 47 UniRef100_A0A193BL91 Protein R  96.4 0.00066 1.3E-09   38.4   0.0   16    1-16     10-25  (25)
+ 48 UniRef100_Q90RG2 Rev protein (  96.3 0.00081 1.5E-09   36.0   0.0   16    1-16      4-19  (19)
+ 49 UniRef100_Q905K3 Rev protein (  96.2  0.0013 2.5E-09   35.2   0.0   16    1-16      4-19  (19)
+ 50 UniRef100_A0A0H3Y8Y3 Protein R  96.0   0.002   4E-09   42.2   0.0   18    1-18     10-27  (55)
+ 51 UniRef100_A0A0H3YA92 Protein R  95.7  0.0048 8.8E-09   41.4   0.0   33    1-33     10-52  (63)
+ 52 UniRef100_B3CKG5 Rev2 protein   95.4  0.0082 1.7E-08   45.3   0.0   39   17-55      6-45  (133)
+ 53 UniRef100_A0A4U1IDV7 Uncharact  95.1   0.017   3E-08   39.8   0.0   25   13-37     37-62  (70)
+ 54 UniRef100_I6RAZ9 Rev protein (  95.1   0.018 3.2E-08   32.8   0.0   16    1-16      9-24  (24)
+ 55 UniRef100_A0A2V6YGE2 Uncharact  95.1   0.018 3.3E-08   38.5   0.0   27   16-42     20-49  (58)
+ 56 UniRef100_Q905H9 Rev protein (  94.8   0.027   5E-08   30.7   0.0   16    1-16      4-19  (19)
+ 57 UniRef100_Q99D93 Rev protein (  94.4   0.048 8.9E-08   31.3   0.0   15    2-16     10-24  (24)
+ 58 UniRef100_A0A7G6Y4B7 Uncharact  94.1   0.071 1.3E-07   32.6   0.0   31    6-38      1-31  (33)
+ 59 UniRef100_Q87577 Rev protein (  93.5    0.12 2.2E-07   29.1   0.0   16    1-16      6-21  (21)
+ 60 UniRef100_A0A650DHR3 Protein R  93.2    0.16 2.9E-07   29.6   0.0   16    1-16     10-25  (25)
+ 61 UniRef100_Q99FH7 Protein Rev n  93.2    0.16 2.9E-07   38.2   0.0   49    5-54     24-72  (116)
+ 62 UniRef100_Q99DA8 Rev protein (  93.1    0.17 3.1E-07   29.3   0.0   15    2-16     10-24  (24)
+ 63 UniRef100_A0A6B9SH66 Protein R  92.6    0.25 4.6E-07   28.9   0.0   16    1-16     10-25  (25)
+ 64 UniRef100_Q905E7 Rev protein (  92.5    0.27 4.9E-07   27.2   0.0   16    1-16      4-19  (19)
+ 65 UniRef100_F4N9Q1 Rev protein n  92.2    0.27 5.9E-07   39.0   0.0   47    2-56      8-54  (163)
+ 66 UniRef100_UPI000E2B3521 Vpu n=  91.9    0.39 7.1E-07   36.5   0.0   23    1-23     10-32  (117)
+ 67 UniRef100_K2NAG2 Secreted prot  90.8    0.64 1.2E-06   34.4   0.0   18   21-38     52-69  (94)
+ 68 UniRef100_A0A2T2N364 Uncharact  90.6    0.71 1.3E-06   35.3   0.0   26   12-38      7-32  (118)
+ 69 UniRef100_A0A6A5LT68 Uncharact  90.2    0.83 1.5E-06   34.8   0.0   40   13-52     38-82  (114)
+ 70 UniRef100_A0A920N0G7 Uncharact  89.0     1.3 2.4E-06   35.8   0.0   30   15-44    137-170 (171)
+ 71 UniRef100_A0A822YN58 Uncharact  88.7     1.4 2.5E-06   29.8   0.0   23   15-37     28-50  (51)
+ 72 UniRef100_A0A7R9TEG3 Uncharact  88.3     1.6 2.9E-06   32.9   0.0   23   16-38     77-99  (100)
+ 73 UniRef100_P22379 Protein Rev n  88.2     1.6   3E-06   31.9   0.0   48    6-57     14-61  (83)
+ 74 UniRef100_F9S4F7 Uncharacteriz  87.0     2.2 4.1E-06   28.0   0.0   16    3-18     27-42  (42)
+ 75 UniRef100_A0A5B7JGK2 Uncharact  81.9     5.9 1.1E-05   28.1   0.0   13   22-34     28-40  (62)
+ 76 UniRef100_A0A8K0XAW8 Uncharact  80.0     7.7 1.4E-05   34.6   0.0   22   12-33    220-241 (337)
+ 77 UniRef100_A0A4R4XJX2 Uncharact  79.4     7.9 1.5E-05   28.1   0.0   22    1-22     25-46  (69)
+ 78 UniRef100_E0VCN2 Transmembrane  73.3      16   3E-05   30.9   0.0   22    2-23     55-76  (195)
+ 79 UniRef100_A0A832I930 Uncharact  71.8      19 3.5E-05   28.8   0.0   17    9-25     51-67  (122)
+ 80 UniRef100_UPI00067EEE87 hypoth  71.3      20 3.6E-05   30.6   0.0   22    6-27    104-125 (202)
+ 81 UniRef100_A0A433DMQ3 Conserved  71.1      20 3.7E-05   32.6   0.0   22   17-38    269-290 (354)
+ 82 UniRef100_A0A1V1TH13 Shugoshin  66.5      30 5.4E-05   30.0   0.0   24   17-40    139-162 (214)
+ 83 UniRef100_UPI001EFA6083 hypoth  64.7      34 6.2E-05   25.6   0.0   26    1-26     41-66  (74)
+ 84 UniRef100_A0A834U7N7 Uncharact  64.5      34 6.3E-05   25.5   0.0   27   28-54     41-67  (73)
+ 85 UniRef100_UPI00027F35B7 unchar  61.2      42   8E-05   28.2   0.0   18   17-34     32-49  (163)
+ 86 UniRef100_A0A6P9FMZ7 Cold-regu  61.2      43   8E-05   27.3   0.0   21   22-42     97-117 (128)
+ 87 UniRef100_A0A938QYN1 Uncharact  59.6      48 8.9E-05   24.8   0.0   28   16-43      7-34  (72)
+ 88 UniRef100_A0A3D4SZ87 Uncharact  56.7      59 0.00011   23.9   0.0   19   16-34     44-62  (62)
+ 89 UniRef100_A0A830H4J6 Uncharact  55.9      62 0.00011   29.7   0.0   23   13-35    157-179 (322)
+ 90 UniRef100_A0A933K3C7 Uncharact  55.3      64 0.00012   29.7   0.0   24   11-34    302-325 (328)
+ 91 UniRef100_A0A934YLM9 Uncharact  52.9      75 0.00014   25.6   0.0   23   11-33     80-102 (111)
+ 92 UniRef100_A0A1W0VTD3 Uncharact  50.1      82 0.00016   27.6   0.0   32   12-43    148-179 (199)
+ 93 UniRef100_A0A165QBE9 MYND-type  45.5 1.2E+02 0.00021   29.7   0.0   29    3-31     86-114 (515)
+ 94 UniRef100_A0A914AAA5 Uncharact  44.5 1.2E+02 0.00023   31.5   0.0   18   14-31    761-778 (1031)
+ 95 UniRef100_A0A085MPQ7 Uncharact  41.3 1.5E+02 0.00028   22.9   0.0   17   10-26     11-27  (76)
+ 96 UniRef100_A0A6A4W1V0 Piwi-like  38.3 1.8E+02 0.00033   26.3   0.0   33   10-42      7-39  (229)
+ 97 UniRef100_A0A0E0FBB3 Uncharact  36.8   2E+02 0.00036   25.9   0.0   24   17-40     77-100 (216)
+ 98 UniRef100_A0A7S0EEW5 Uncharact  35.0 2.2E+02  0.0004   23.7   0.0   26   17-42      9-34  (121)
+ 99 UniRef100_A0A0P0X8Q1 Os07g0603  26.6 3.8E+02 0.00069   24.5   0.0   30   16-45    188-217 (222)
+100 UniRef100_A0A7K2ZY94 LacI fami  22.6   5E+02 0.00092   25.0   0.0   34   10-43    198-231 (319)
+
+No 1
+>UniRef100_A0A1I9J567 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A1I9J567_9HIV1
+Probab=99.95  E-value=2.7e-32  Score=182.53  Aligned_cols=57  Identities=91%  Similarity=1.424  Sum_probs=55.9  Template_Neff=2.245
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |+|+++||+||+||||||||+++|||+||||||||||+||+||++||+|||+++||+
+T Consensus        12 e~LL~tvR~IK~LyqSNP~Ps~eGtRqARRNRRRRWR~RQrqi~~is~rILs~~LGr   68 (115)
+T UniRef100_A0A1   12 EELLKTVRIIKFLYQSNPPPSPEGTRQARRNRRRRWRERQRQIRSISERILSTYLGR   68 (115)
+Confidence            689999999999999999999999999999999999999999999999999999996
+
+
+No 2
+>UniRef100_A0A060GNM7 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A060GNM7_9HIV1
+Probab=99.95  E-value=3.9e-32  Score=184.39  Aligned_cols=57  Identities=88%  Similarity=1.274  Sum_probs=56.2  Template_Neff=1.900
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |||+++|||||+||||||||+|+||||||||||||||+||+||++||+|||++||||
+T Consensus        10 e~ll~~vrlik~lyqsnPyP~peGTRQARrNRRRRWRaRQrQI~~iSerILstcLGR   66 (129)
+T UniRef100_A0A0   10 EELLKAVRLIKILYQSNPYPKPEGTRQARRNRRRRWRARQRQIRSISERILSTCLGR   66 (129)
+Confidence            789999999999999999999999999999999999999999999999999999997
+
+
+No 3
+>UniRef100_A0A023HI34 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A023HI34_9HIV1
+Probab=99.95  E-value=6.7e-32  Score=186.39  Aligned_cols=57  Identities=88%  Similarity=1.330  Sum_probs=55.9  Template_Neff=2.300
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |+|+++|||||+||||||||+|+||||||||||||||++|+||++||+|||++||||
+T Consensus        13 eeLL~aVRiIKiLYQSNP~P~peGTRQARRNRRRRWR~RQrQI~sis~rILst~LGR   69 (147)
+T UniRef100_A0A0   13 EELLKAVRIIKILYQSNPPPSPEGTRQARRNRRRRWRARQRQIRSISERILSTCLGR   69 (147)
+Confidence            689999999999999999999999999999999999999999999999999999996
+
+
+No 4
+>UniRef100_A0A0A0UZP9 Protein Rev (Fragment) n=3 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0A0UZP9_9HIV1
+Probab=99.94  E-value=1.9e-31  Score=180.48  Aligned_cols=57  Identities=84%  Similarity=1.285  Sum_probs=56.1  Template_Neff=1.700
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |+|++++|+||+||||||||+|+||||||+|||||||+||+||++|+||||++||||
+T Consensus        10 e~ll~a~riikilyqsnPyP~peGTRQArrNRRRRWRARQrQI~~IseRILstcLGR   66 (126)
+T UniRef100_A0A0   10 EELLRAVRIIKILYQSNPYPEPEGTRQARKNRRRRWRARQRQIHSISERILSTCLGR   66 (126)
+Confidence            689999999999999999999999999999999999999999999999999999997
+
+
+No 5
+>UniRef100_A0A140ECS3 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A140ECS3_9HIV1
+Probab=99.93  E-value=1.8e-30  Score=175.95  Aligned_cols=56  Identities=79%  Similarity=1.198  Sum_probs=55.0  Template_Neff=2.693
+
+Q 6cf2_F            2 DLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         2 ~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      .|++|||+||+||||||||+++||++|||||||||+++|+||++|++|||++||||
+T Consensus        14 ~LL~AvriIkILY~SnPYP~~~GTr~aRrnRrrRWrArqrqI~~I~~RiL~~~LgR   69 (126)
+T UniRef100_A0A1   14 RLLQAVRIIKILYQSNPYPSNEGTRQARRNRRRRWRARQRQIHEISERILASCLGR   69 (126)
+Confidence            59999999999999999999999999999999999999999999999999999997
+
+
+No 6
+>UniRef100_D6NXC9 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=D6NXC9_9HIV1
+Probab=99.90  E-value=8.3e-28  Score=147.63  Aligned_cols=53  Identities=85%  Similarity=1.314  Sum_probs=51.7  Template_Neff=1.586
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILST   53 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~   53 (57)
+                      |+|+++||+||+||||||||+|+||+||++||||+|++++.|+..++++||++
+T Consensus        10 e~ll~avr~ik~lyqsnp~p~~egtrqarrnrrrrwr~~~~~~~~~s~rilst   62 (62)
+T UniRef100_D6NX   10 EALLQAVRIIKILYQSNPPPSPEGTRQARRNRRRRWRERQRQIRDISDRILST   62 (62)
+Confidence            68999999999999999999999999999999999999999999999999985
+
+
+No 7
+>UniRef100_C7BB92 Protein Rev (Fragment) n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=C7BB92_SIV
+Probab=99.85  E-value=4.7e-25  Score=149.54  Aligned_cols=57  Identities=63%  Similarity=1.098  Sum_probs=55.3  Template_Neff=2.053
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |.|++++.|||+||.|||||+++|||.||||||||||+||+|+++||.|||.+|+|+
+T Consensus         7 ~~~~~~~~~~~~~~~~~PYP~~~GTRsARRNRrRRWR~RQrQve~is~RiL~s~lgg   63 (121)
+T UniRef100_C7BB    7 ENLLQAIKIIKILYESNPYPSSQGTRSARRNRRRRWRQRQRQVESIASRILESLLGG   63 (121)
+Confidence            579999999999999999999999999999999999999999999999999999985
+
+
+No 8
+>UniRef100_A0A076V4A1 Protein Nef (Fragment) n=4 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A076V4A1_9HIV1
+Probab=99.82  E-value=1.1e-23  Score=153.64  Aligned_cols=57  Identities=81%  Similarity=1.277  Sum_probs=56.0  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |||++.|||||+||||||+|+.+||||+||||||||+.+|+||.+++.|||++||||
+T Consensus        10 eellrtvriikilyqsnpppnhegtrqarrnrrrrwrerqrqirslsgwilssylgr   66 (235)
+T UniRef100_A0A0   10 EELLRTVRIIKILYQSNPPPNHEGTRQARRNRRRRWRERQRQIRSLSGWILSSYLGR   66 (235)
+Confidence            689999999999999999999999999999999999999999999999999999996
+
+
+No 9
+>UniRef100_A0A075VP85 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=A0A075VP85_SIV
+Probab=99.81  E-value=2.1e-23  Score=139.73  Aligned_cols=53  Identities=49%  Similarity=0.820  Sum_probs=51.7  Template_Neff=2.700
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILST   53 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~   53 (57)
+                      |||.+.+|||++|||+||||.++||+++|||+||||+++|.||.+||++|+++
+T Consensus         8 EeLrrrLRLI~~LhqTNPYP~g~GTA~QRR~rRRRWrqrw~Qi~aLAdrI~~~   60 (109)
+T UniRef100_A0A0    8 EELRRRLRLIHLLHQTNPYPTGPGTANQRRRRRRRWRQRWQQILALADRIYSF   60 (109)
+Confidence            78999999999999999999999999999999999999999999999999986
+
+
+No 10
+>UniRef100_A0A193BL97 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A193BL97_9HIV1
+Probab=99.80  E-value=4e-23  Score=120.21  Aligned_cols=42  Identities=88%  Similarity=1.324  Sum_probs=40.4  Template_Neff=2.047
+
+Q 6cf2_F           14 YQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYL   55 (57)
+Q Consensus        14 yQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~l   55 (57)
+                      .||||||++|||+++|||||+||+++|+||++||.|||++.|
+T Consensus         2 ~~~~p~p~pegtrqarrnrrrrwrerqrqiqsis~w~~~~~~   43 (43)
+T UniRef100_A0A1    2 YQSNPPPNPEGTRQARRNRRRRWRARQRQIQSISQWILSTHL   43 (43)
+Confidence            589999999999999999999999999999999999999875
+
+
+No 11
+>UniRef100_H6D403 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=H6D403_9HIV1
+Probab=99.70  E-value=1.6e-20  Score=132.81  Aligned_cols=57  Identities=53%  Similarity=0.754  Sum_probs=54.9  Template_Neff=2.553
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGT----RQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GT----rqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      ||++++++.|++||||||||+++||    +++|+|+||||+++++||++|+++++++|+|+
+T Consensus        10 ee~lr~~~~i~~l~qtnp~P~~~Gt~~~~rq~rrnrrrrW~~~~~~~~~i~~~~~s~~~~~   70 (161)
+T UniRef100_H6D4   10 EEELRSYFQITHLQQDNPYPTREGTAGDGRQGRRNRRRRWQQLQRQIIRISTWLFSNCLTR   70 (161)
+Confidence            6889999999999999999999999    99999999999999999999999999999985
+
+
+No 12
+>UniRef100_A4UDF8 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=A4UDF8_SIV
+Probab=99.70  E-value=2e-20  Score=128.59  Aligned_cols=57  Identities=61%  Similarity=1.063  Sum_probs=55.2  Template_Neff=1.827
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS-----------NPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs-----------NPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      +||++++|+|++||+|           +|||++.||+.+||||||||+++|.||.+|+|+||-.+|||
+T Consensus         9 ~elir~cr~i~ily~s~~agl~sp~stdpypt~~gtr~arrnrrrrw~~rq~qir~~serilv~~lgr   76 (128)
+T UniRef100_A4UD    9 QELIRACRQIRILYNSSKAGLFSPFSTDPYPTPRGTRAARRNRRRRWKQRQCQIRAISERILVSVLGR   76 (128)
+Confidence            5899999999999997           89999999999999999999999999999999999999996
+
+
+No 13
+>UniRef100_D6NXQ8 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=D6NXQ8_9HIV1
+Probab=99.63  E-value=5.6e-19  Score=118.24  Aligned_cols=51  Identities=76%  Similarity=1.117  Sum_probs=47.9  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERIL   51 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIl   51 (57)
+                      |.|++.+|+||.||||||.|+.+||+|+||||||||++.|+||.+|+....
+T Consensus        10 e~llk~vrlik~lyqsnp~pssegtrqarrnrrrrwre~qrqirsis~~~~   60 (106)
+T UniRef100_D6NX   10 EXLLKXVRLIKXLYQSNPXPSSEGTRQARRNRRRRWREXQRQIRSISXXXX   60 (106)
+Confidence            578999999999999999999999999999999999999999999987543
+
+
+No 14
+>UniRef100_A0A0H4LW91 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0H4LW91_9HIV1
+Probab=99.62  E-value=8.4e-19  Score=116.32  Aligned_cols=40  Identities=80%  Similarity=1.263  Sum_probs=39.3  Template_Neff=1.376
+
+Q 6cf2_F           18 PPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus        18 PyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |||+|+||+|+|.|||||||++|+||++|+|+||++||||
+T Consensus         1 pypspegtrqarknrrrrwrarqrqi~~iseril~t~lgr   40 (97)
+T UniRef100_A0A0    1 PYPSPEGTRQARKNRRRRWRARQRQISAISERILSACLGR   40 (97)
+Confidence            8999999999999999999999999999999999999996
+
+
+No 15
+>UniRef100_A0A1L4CV54 Protein Rev n=1 Tax=Human immunodeficiency virus 2 TaxID=11709 RepID=A0A1L4CV54_9HIV2
+Probab=99.54  E-value=1.3e-17  Score=119.36  Aligned_cols=53  Identities=47%  Similarity=0.787  Sum_probs=50.9  Template_Neff=1.700
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILST   53 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~   53 (57)
+                      ++|.+.+|||++|||+||||.+.||+.+||||||||++++.||.+|+++|.++
+T Consensus         6 ~dlqk~lRLlhLLHQTNpYPQgpgTAsQRRNRRRRwkrrglQilALAdrI~~~   58 (171)
+T UniRef100_A0A1    6 KDLQKGLRLLHLLHQTNPYPQGPGTASQRRNRRRRWKRRGLQILALADRIHPF   58 (171)
+Confidence            47899999999999999999999999999999999999999999999999875
+
+
+No 16
+>UniRef100_E1ANU3 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=E1ANU3_SIV
+Probab=99.50  E-value=5.6e-17  Score=109.16  Aligned_cols=52  Identities=44%  Similarity=0.842  Sum_probs=49.9  Template_Neff=1.684
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILS   52 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls   52 (57)
+                      +|+.+.+|+|++||+|||||.+.||+.+||.+|++||.||.||..++|+||-
+T Consensus         8 ~eirrr~rli~~l~ltnpypq~ggtanqrrr~rr~wrrrw~qi~qlaerifl   59 (104)
+T UniRef100_E1AN    8 QEIRRRIRLINFLHLTNPYPQPGGTANQRRRKRRQWRRRWLQIQQLAERIFL   59 (104)
+Confidence            4789999999999999999999999999999999999999999999999984
+
+
+No 17
+>UniRef100_A0A1Z3GT47 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=A0A1Z3GT47_SIV
+Probab=99.46  E-value=1.7e-16  Score=108.19  Aligned_cols=56  Identities=63%  Similarity=1.082  Sum_probs=53.3  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |.|++++||||+||| ||||.|.|+|-+|||.||||..+|-|+..|+.++|.+++|.
+T Consensus        12 eqllkavriikilyq-npypkpagsraarrnkrrrwkkrqvqvegiaarvlrtlvgg   67 (117)
+T UniRef100_A0A1   12 EQLLKAVRIIKILYQ-NPYPKPAGSRAARRNKRRRWRKRQNQVEGIAARVLRTLVGG   67 (117)
+Confidence            578999999999999 69999999999999999999999999999999999998873
+
+
+No 18
+>UniRef100_A0A059VQR2 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A059VQR2_9HIV1
+Probab=99.43  E-value=3.5e-16  Score=91.34  Aligned_cols=32  Identities=84%  Similarity=1.290  Sum_probs=31.0  Template_Neff=1.600
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNR   32 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnR   32 (57)
+                      |||++++|+||+||||||+|+.+||+|+||||
+T Consensus        10 EeLL~avR~IKiLYQS~~~ps~egt~~~~~~~   41 (41)
+T UniRef100_A0A0   10 EELLKAVRIIKILYQSNPPPSSEGTRQARRNR   41 (41)
+Confidence            78999999999999999999999999999996
+
+
+No 19
+>UniRef100_Q4PTD9 Protein Tat n=93 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q4PTD9_9HIV1
+Probab=99.43  E-value=3.8e-16  Score=111.62  Aligned_cols=41  Identities=88%  Similarity=1.350  Sum_probs=39.7  Template_Neff=1.386
+
+Q 6cf2_F           17 NPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus        17 NPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      -|+|.++|||||+||||||||++|+||++||+|||++||||
+T Consensus        73 ~p~p~~~gtrqa~rnrrrrwr~rqr~i~~is~~il~t~lgr  113 (166)
+T UniRef100_Q4PT   73 YPPPRPEGTRQARRNRRRRWRARQRQIRSISERILSTCLGR  113 (166)
+Confidence            48999999999999999999999999999999999999996
+
+
+No 20
+>UniRef100_A0A075VQD4 Protein Rev n=2 Tax=Simian immunodeficiency virus TaxID=11723 RepID=A0A075VQD4_SIV
+Probab=99.41  E-value=6.5e-16  Score=107.32  Aligned_cols=53  Identities=49%  Similarity=0.806  Sum_probs=51.5  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILST   53 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~   53 (57)
+                      |||.+.+|+|++|||+|||-.+.||+.+||.|||||+++|.||.+++++|+++
+T Consensus         8 eelrrrlrlihflhqtnpyqqgtgtanqrrrrrrrwrqrwqqilaladriysf   60 (134)
+T UniRef100_A0A0    8 EELRRRLRLIHFLHQTNPYQQGTGTANQRRRRRRRWRQRWQQILALADRIYSF   60 (134)
+Confidence            68999999999999999999999999999999999999999999999999986
+
+
+No 21
+>UniRef100_A0A0K1YQG2 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0K1YQG2_9HIV1
+Probab=99.41  E-value=7.1e-16  Score=104.33  Aligned_cols=39  Identities=85%  Similarity=1.371  Sum_probs=37.5  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRER   39 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~r   39 (57)
+                      |||++.||+||+||||||+|+..||+|+|||+||||++-
+T Consensus         4 eellktvrlikflyqsnpppslkgtrqarrnrrrrwres   42 (109)
+T UniRef100_A0A0    4 EELLKTVRLIKFLYQSNPPPSLKGTRQARRNRRRRWRES   42 (109)
+Confidence            789999999999999999999999999999999999974
+
+
+No 22
+>UniRef100_Q8JAG7 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=Q8JAG7_SIV
+Probab=99.35  E-value=2.9e-15  Score=104.48  Aligned_cols=56  Identities=59%  Similarity=0.945  Sum_probs=53.1  Template_Neff=1.185
+
+Q 6cf2_F            2 DLLKAVRLIKFLYQS-----------NPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         2 ~Ll~~vRlIk~LyQs-----------NPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      .|+-++|+||.||.|           +|||...|||.+|||++||||++|.|+..|+.+||..++||
+T Consensus        14 nl~lacrliktl~~sskaglltslpadpypt~sgtrsarrn~~rrwrarq~qvr~is~rileslvgr   80 (135)
+T UniRef100_Q8JA   14 NLILACRLIKTLHRSSKAGLLTSLPADPYPTSSGTRSARRNRRRRWRARQGQVREISNRILESLVGR   80 (135)
+Confidence            467799999999987           89999999999999999999999999999999999999986
+
+
+No 23
+>UniRef100_Q88071 Protein Rev n=286 Tax=Simian immunodeficiency virus TaxID=11723 RepID=Q88071_SIV
+Probab=99.32  E-value=7.2e-15  Score=104.37  Aligned_cols=53  Identities=47%  Similarity=0.765  Sum_probs=51.5  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILST   53 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~   53 (57)
+                      |||.+.+|+|++|||+|.||.++||..+||.|||||+.+|.|+.+++++|+++
+T Consensus        58 eelrkrlrlihllhqtnsyptgpgtanqrrqrrrrwrrrwqqllaladriysf  110 (157)
+T UniRef100_Q880   58 EELRKRLRLIHLLHQTNSYPTGPGTANQRRQRRRRWRRRWQQLLALADRIYSF  110 (157)
+Confidence            68999999999999999999999999999999999999999999999999986
+
+
+No 24
+>UniRef100_C7T4I5 Protein Rev (Fragment) n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=C7T4I5_SIV
+Probab=99.23  E-value=4.1e-14  Score=94.34  Aligned_cols=40  Identities=58%  Similarity=0.999  Sum_probs=38.6  Template_Neff=1.756
+
+Q 6cf2_F           18 PPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus        18 PyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |||++.|+|.||||||||||+||.|+++|+.+||...||.
+T Consensus         1 PYPS~aGSR~ARRNRRRRWRqRQ~QVD~lA~RIL~~rLgG   40 (92)
+T UniRef100_C7T4    1 PYPSGAGSRTARRNRRRRWRQRQHQVDSLAQRILQYRLGG   40 (92)
+Confidence            8999999999999999999999999999999999999884
+
+
+No 25
+>UniRef100_D9N3W9 Protein Rev (Fragment) n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=D9N3W9_SIV
+Probab=99.16  E-value=1.6e-13  Score=93.04  Aligned_cols=49  Identities=47%  Similarity=0.744  Sum_probs=46.3  Template_Neff=1.900
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTY   54 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~   54 (57)
+                      |||.+.+|+|+.     |||.+.||+++||++|+||+.+++||.+||+||+++-
+T Consensus         8 ~~~~~~~~~~~~-----PYP~gqGTArQRRraRqRWa~~rqQIL~LAdRI~s~P   56 (102)
+T UniRef100_D9N3    8 EELRKRLRLIHD-----PYPTGPGTANQRRQRRRRWRRRWQQLLALADRIYSFP   56 (102)
+Confidence            689999999986     9999999999999999999999999999999999874
+
+
+No 26
+>UniRef100_Q02839 Protein Rev n=1 Tax=Simian immunodeficiency virus agm.grivet (isolate AGM gr-1) TaxID=31684 RepID=REV_SIVG1
+Probab=98.95  E-value=5.4e-12  Score=89.75  Aligned_cols=51  Identities=47%  Similarity=0.833  Sum_probs=49.2  Template_Neff=1.000
+
+Q 6cf2_F            4 LKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTY   54 (57)
+Q Consensus         4 l~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~   54 (57)
+                      ..++.|||.||.|||||.-.||.++||..|.|||..|.||+.|+.++|+++
+T Consensus         8 kqalkiiktlygsnpypqfsgtarqrrrarqrwrkqqqqidkiagrvlntf   58 (147)
+T UniRef100_Q028    8 KQALKIIKTLYGSNPYPQFSGTARQRRRARQRWRKQQQQIDKIAGRVLNTF   58 (147)
+Confidence            679999999999999999999999999999999999999999999999986
+
+
+No 27
+>UniRef100_UPI0021F91F6E RevCC n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=UPI0021F91F6E
+Probab=98.88  E-value=1.5e-11  Score=83.10  Aligned_cols=32  Identities=88%  Similarity=1.334  Sum_probs=28.9  Template_Neff=1.000
+
+Q 6cf2_F           13 LYQSNPPPNPEGTRQARRNRRRRWRERQRQIH   44 (57)
+Q Consensus        13 LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~   44 (57)
+                      -.||||+|+|+||+++||||||||+.+|+|-.
+T Consensus        35 seqsnpppnpegtrqarrnrrrrwrerqrqke   66 (98)
+T UniRef100_UPI0   35 SEQSNPPPNPEGTRQARRNRRRRWRERQRQKE   66 (98)
+Confidence            35679999999999999999999999999853
+
+
+No 28
+>UniRef100_A0A1P8NRQ9 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=A0A1P8NRQ9_SIV
+Probab=98.74  E-value=8.1e-11  Score=77.75  Aligned_cols=55  Identities=40%  Similarity=0.728  Sum_probs=50.6  Template_Neff=1.728
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |.|...+||+..|..  |||.|+|.+++|+.+|++||+++.|-..+-.+||.+++|+
+T Consensus        10 e~l~~~lri~~~lq~--~yp~pegp~~~r~r~r~~~rq~~aqrl~~qqrife~i~~~   64 (80)
+T UniRef100_A0A1   10 EQLRTFLRIAQQLQE--PYPPPEGPRRTRRRRRRQWRQRRAQRLYLQQRIFEAIAGS   64 (80)
+Confidence            346778999999988  9999999999999999999999999999999999999884
+
+
+No 29
+>UniRef100_Q993M7 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q993M7_9HIV1
+Probab=98.74  E-value=8.5e-11  Score=77.30  Aligned_cols=38  Identities=55%  Similarity=1.091  Sum_probs=36.2  Template_Neff=1.415
+
+Q 6cf2_F           18 PPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYL   55 (57)
+Q Consensus        18 PyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~l   55 (57)
+                      |.|+|.|+|.+|+|||||||.+|.||+.|+.++|.+++
+T Consensus         1 phpsp~gsrnar~nrrrrwrrrqaqvd~laar~latvv   38 (78)
+T UniRef100_Q993    1 PHPSPSGSRNARRNRRRRWRRRQAQVDTLAARVLATVV   38 (78)
+Confidence            78999999999999999999999999999999998875
+
+
+No 30
+>UniRef100_J7FE45 Protein Rev (Fragment) n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=J7FE45_SIV
+Probab=98.70  E-value=1.5e-10  Score=79.54  Aligned_cols=40  Identities=58%  Similarity=1.045  Sum_probs=37.6  Template_Neff=1.000
+
+Q 6cf2_F           18 PPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus        18 PyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      |||...|++-+||||||||+++|+|+++++.+||..++.|
+T Consensus         1 pypqqsgsrtarrnrrrrwrqrqrqvdslasrilqsivdr   40 (107)
+T UniRef100_J7FE    1 PYPQQSGSRTARRNRRRRWRQRQRQVDSLASRILQSIVDR   40 (107)
+Confidence            8999999999999999999999999999999999887653
+
+
+No 31
+>UniRef100_A0A140ECP8 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A140ECP8_9HIV1
+Probab=98.02  E-value=9.8e-08  Score=64.60  Aligned_cols=24  Identities=67%  Similarity=0.998  Sum_probs=22.2  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEG   24 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~G   24 (57)
+                      |.|++++||||+||||||||+.+.
+T Consensus        10 eallqavriikilyqsnpypssed   33 (87)
+T UniRef100_A0A1   10 EALLQAVRIIKILYQSNPYPSSED   33 (87)
+Confidence            579999999999999999999875
+
+
+No 32
+>UniRef100_Q9JH74 Protein Tat n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=Q9JH74_SIV
+Probab=97.67  E-value=1.2e-06  Score=63.19  Aligned_cols=41  Identities=46%  Similarity=0.921  Sum_probs=38.8  Template_Neff=1.000
+
+Q 6cf2_F           16 SNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLG   56 (57)
+Q Consensus        16 sNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lg   56 (57)
+                      +.|||.|+|.++.||.|||.|+++..|-..+-++|+..++|
+T Consensus        75 tepypgpegprqtrrrrrrqwrqrrtqrlylqqrifeaifg  115 (132)
+T UniRef100_Q9JH   75 TEPYPGPEGPRQTRRRRRRQWRQRRTQRLYLQQRIFEAIFG  115 (132)
+Confidence            47999999999999999999999999999999999998887
+
+
+No 33
+>UniRef100_Q4PTD8 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q4PTD8_9HIV1
+Probab=97.37  E-value=7.7e-06  Score=57.89  Aligned_cols=27  Identities=59%  Similarity=0.890  Sum_probs=23.7  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTRQ   27 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTrq   27 (57)
+                      |.|+-+.|.||+||||||||.|.|--+
+T Consensus        10 ealllaartikilyqsnpypepkgldr   36 (109)
+T UniRef100_Q4PT   10 EALLLAARTIKILYQSNPYPEPKGLDR   36 (109)
+Confidence            567889999999999999999999643
+
+
+No 34
+>UniRef100_A0A0C5GZX8 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0C5GZX8_9HIV1
+Probab=97.21  E-value=1.7e-05  Score=44.23  Aligned_cols=16  Identities=94%  Similarity=1.225  Sum_probs=15.1  Template_Neff=1.632
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |+|++|+|+||+||||
+T Consensus        10 edllkavrlikilyqs   25 (25)
+T UniRef100_A0A0   10 EDLLKAVRLIKILYQS   25 (25)
+Confidence            6899999999999997
+
+
+No 35
+>UniRef100_Q905D9 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905D9_9HIV1
+Probab=97.19  E-value=2e-05  Score=41.55  Aligned_cols=16  Identities=69%  Similarity=1.018  Sum_probs=15.0  Template_Neff=1.263
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |++++++||||+||||
+T Consensus         4 e~~l~avriikilyqs   19 (19)
+T UniRef100_Q905    4 EEPLRAVRIIKILYQS   19 (19)
+Confidence            6899999999999996
+
+
+No 36
+>UniRef100_Q905K7 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905K7_9HIV1
+Probab=97.17  E-value=2.3e-05  Score=41.34  Aligned_cols=16  Identities=94%  Similarity=1.225  Sum_probs=15.0  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |+|++++|+||+||||
+T Consensus         4 edllkavrlikilyqs   19 (19)
+T UniRef100_Q905    4 EDLLKAVRLIKILYQS   19 (19)
+Confidence            6899999999999996
+
+
+No 37
+>UniRef100_A0A097KZA8 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A097KZA8_9HIV1
+Probab=97.05  E-value=3.8e-05  Score=42.90  Aligned_cols=16  Identities=75%  Similarity=1.124  Sum_probs=14.7  Template_Neff=1.780
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |+|+.++||||+||||
+T Consensus        10 ~~LL~avriIKiLYqs   25 (25)
+T UniRef100_A0A0   10 EELLQAVRIIKILYQS   25 (25)
+Confidence            4799999999999997
+
+
+No 38
+>UniRef100_A0A097KYQ5 Protein Rev (Fragment) n=2 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A097KYQ5_9HIV1
+Probab=96.98  E-value=5.5e-05  Score=42.66  Aligned_cols=16  Identities=69%  Similarity=1.101  Sum_probs=15.2  Template_Neff=1.600
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++++|+||+||||
+T Consensus        10 eeLl~~vr~IkiLYQS   25 (26)
+T UniRef100_A0A0   10 EELLRVVRIIKILYQS   25 (26)
+Confidence            6899999999999998
+
+
+No 39
+>UniRef100_Q905E3 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905E3_9HIV1
+Probab=96.95  E-value=6.7e-05  Score=39.77  Aligned_cols=16  Identities=63%  Similarity=1.076  Sum_probs=15.1  Template_Neff=1.345
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++.+|+||+||||
+T Consensus         4 e~llriir~ikilyqs   19 (19)
+T UniRef100_Q905    4 EELLRIIRIIKILYQS   19 (19)
+Confidence            7899999999999997
+
+
+No 40
+>UniRef100_Q905F9 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905F9_9HIV1
+Probab=96.91  E-value=8e-05  Score=39.49  Aligned_cols=16  Identities=69%  Similarity=1.105  Sum_probs=15.0  Template_Neff=1.263
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||+++++|||+||||
+T Consensus         4 ~ellqav~i~kilyqs   19 (19)
+T UniRef100_Q905    4 DELLQAVRIIKILYQS   19 (19)
+Confidence            6899999999999996
+
+
+No 41
+>UniRef100_A0A0C5GPD3 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0C5GPD3_9HIV1
+Probab=96.87  E-value=9.3e-05  Score=41.83  Aligned_cols=16  Identities=75%  Similarity=1.149  Sum_probs=15.3  Template_Neff=1.400
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++++|+|++||||
+T Consensus        10 eell~avr~ikilyqs   25 (26)
+T UniRef100_A0A0   10 EELLRAVRIIKILYQS   25 (26)
+Confidence            7999999999999997
+
+
+No 42
+>UniRef100_A0A0C5GZ34 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0C5GZ34_9HIV1
+Probab=96.79  E-value=0.00013  Score=40.98  Aligned_cols=16  Identities=69%  Similarity=1.105  Sum_probs=15.0  Template_Neff=1.658
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++++|+||+||||
+T Consensus        10 ~ellk~ir~ik~lyqs   25 (25)
+T UniRef100_A0A0   10 EELLKVIRIIKILYQS   25 (25)
+Confidence            6899999999999996
+
+
+No 43
+>UniRef100_A0A0C5GNZ7 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0C5GNZ7_9HIV1
+Probab=96.55  E-value=0.00037  Score=38.95  Aligned_cols=16  Identities=88%  Similarity=1.288  Sum_probs=15.0  Template_Neff=1.167
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++.+|+||+||||
+T Consensus         9 e~l~ktvrlik~lyqs   24 (24)
+T UniRef100_A0A0    9 EDLIKTVRLIKFLYQS   24 (24)
+Confidence            6899999999999996
+
+
+No 44
+>UniRef100_Q90RF3 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q90RF3_9HIV1
+Probab=96.51  E-value=0.00044  Score=36.89  Aligned_cols=16  Identities=69%  Similarity=1.020  Sum_probs=14.5  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      .||+.++|+||+||||
+T Consensus         4 aelltavriikilyqs   19 (19)
+T UniRef100_Q90R    4 AELLTAVRIIKILYQS   19 (19)
+Confidence            3789999999999996
+
+
+No 45
+>UniRef100_A0A0B5GP40 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0B5GP40_9HIV1
+Probab=96.47  E-value=0.00047  Score=38.93  Aligned_cols=16  Identities=81%  Similarity=1.036  Sum_probs=14.8  Template_Neff=1.561
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |+|+-+||+||+||||
+T Consensus        10 ~~lllavr~ikilyqs   25 (25)
+T UniRef100_A0A0   10 EQLLLAVRLIKILYQS   25 (25)
+Confidence            6899999999999996
+
+
+No 46
+>UniRef100_A0A076V4W4 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A076V4W4_9HIV1
+Probab=96.44  E-value=0.00054  Score=39.82  Aligned_cols=19  Identities=63%  Similarity=0.873  Sum_probs=16.7  Template_Neff=1.411
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPP   19 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPy   19 (57)
+                      +||+.+||+||+||||.-|
+T Consensus        10 ~~lltavr~ikilyqssky   28 (29)
+T UniRef100_A0A0   10 EELLTAVRIIKILYQSSKY   28 (29)
+Confidence            5799999999999998654
+
+
+No 47
+>UniRef100_A0A193BL91 Protein Rev (Fragment) n=2 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A193BL91_9HIV1
+Probab=96.39  E-value=0.00066  Score=38.37  Aligned_cols=16  Identities=75%  Similarity=1.190  Sum_probs=15.0  Template_Neff=1.266
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |+|++.+|+|++||||
+T Consensus        10 e~ll~tvr~ikflyqs   25 (25)
+T UniRef100_A0A1   10 EELLQTVRVIKFLYQS   25 (25)
+Confidence            6899999999999996
+
+
+No 48
+>UniRef100_Q90RG2 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q90RG2_9HIV1
+Probab=96.34  E-value=0.00081  Score=35.97  Aligned_cols=16  Identities=63%  Similarity=1.032  Sum_probs=15.0  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++..|+||+||||
+T Consensus         4 eellrvariikilyqs   19 (19)
+T UniRef100_Q90R    4 EELLRVARIIKILYQS   19 (19)
+Confidence            6899999999999996
+
+
+No 49
+>UniRef100_Q905K3 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905K3_9HIV1
+Probab=96.19  E-value=0.0013  Score=35.21  Aligned_cols=16  Identities=69%  Similarity=1.024  Sum_probs=15.0  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||+.+-|+||+||||
+T Consensus         4 eelltatriikilyqs   19 (19)
+T UniRef100_Q905    4 EELLTATRIIKILYQS   19 (19)
+Confidence            6899999999999996
+
+
+No 50
+>UniRef100_A0A0H3Y8Y3 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0H3Y8Y3_9HIV1
+Probab=96.03  E-value=0.002  Score=42.23  Aligned_cols=18  Identities=67%  Similarity=0.910  Sum_probs=15.9  Template_Neff=1.500
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNP   18 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNP   18 (57)
+                      |+|+++|||||+||||.-
+T Consensus        10 eallqavriikilyqstl   27 (55)
+T UniRef100_A0A0   10 EALLQAVRIIKILYQSTL   27 (55)
+Confidence            579999999999999843
+
+
+No 51
+>UniRef100_A0A0H3YA92 Protein Rev n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A0H3YA92_9HIV1
+Probab=95.73  E-value=0.0048  Score=41.45  Aligned_cols=33  Identities=55%  Similarity=0.963  Sum_probs=24.9  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNP----------EGTRQARRNRR   33 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~----------~GTrqaRRnRR   33 (57)
+                      |.|++.+|+|++||||.-.|+|          +|++.+-|.|.
+T Consensus        10 eallrlvriirilyqsthtpnpkeldrlrkieegsrkqdrdrs   52 (63)
+T UniRef100_A0A0   10 EALLRLVRIIRILYQSTHTPNPKELDRLRKIEEGSRKQDRDRS   52 (63)
+Confidence            5789999999999999766665          45665555544
+
+
+No 52
+>UniRef100_B3CKG5 Rev2 protein (Fragment) n=1 Tax=SIV-wrc Pbt-05GM-X02 TaxID=498715 RepID=B3CKG5_SIV
+Probab=95.45  E-value=0.0082  Score=45.26  Aligned_cols=39  Identities=44%  Similarity=0.742  Sum_probs=34.1  Template_Neff=1.654
+
+Q 6cf2_F           17 NPPPN-PEGTRQARRNRRRRWRERQRQIHSISERILSTYL   55 (57)
+Q Consensus        17 NPyP~-~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~l   55 (57)
+                      .|||. +.||+++|||+|||...-.+|-.++-|||.+++|
+T Consensus         6 e~~~~~grgtarqrr~~rrr~~~~r~~rlavqeri~~~ll   45 (133)
+T UniRef100_B3CK    6 EPPQQLGRGTARQRRRRRRRFQSHRRQRLAVQERICNTLL   45 (133)
+Confidence            35555 6899999999999999999999999999998876
+
+
+No 53
+>UniRef100_A0A4U1IDV7 Uncharacterized protein n=1 Tax=Trinickia sp. 7GSK02 TaxID=2571161 RepID=A0A4U1IDV7_9BURK
+Probab=95.13  E-value=0.017  Score=39.79  Aligned_cols=25  Identities=56%  Similarity=1.080  Sum_probs=18.8  Template_Neff=1.000
+
+Q 6cf2_F           13 LYQSNPPPNPEGTR-QARRNRRRRWR   37 (57)
+Q Consensus        13 LyQsNPyP~~~GTr-qaRRnRRRRWR   37 (57)
+                      |.-+||.|+|.||. +.||.+|+||-
+T Consensus        37 llvtnpipspsgtaarrrrgrrrrws   62 (70)
+T UniRef100_A0A4   37 LLVTNPIPSPSGTAARRRRGRRRRWS   62 (70)
+Confidence            34579999999984 45566788885
+
+
+No 54
+>UniRef100_I6RAZ9 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=I6RAZ9_9HIV1
+Probab=95.09  E-value=0.018  Score=32.85  Aligned_cols=16  Identities=69%  Similarity=1.034  Sum_probs=14.8  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |+|.+.+|.||+||||
+T Consensus         9 edliqvvryikilyqs   24 (24)
+T UniRef100_I6RA    9 EDLIQVVRYIKILYQS   24 (24)
+Confidence            6899999999999996
+
+
+No 55
+>UniRef100_A0A2V6YGE2 Uncharacterized protein n=1 Tax=Candidatus Rokubacteria bacterium TaxID=2053607 RepID=A0A2V6YGE2_9BACT
+Probab=95.08  E-value=0.018  Score=38.47  Aligned_cols=27  Identities=56%  Similarity=1.196  Sum_probs=20.9  Template_Neff=1.000
+
+Q 6cf2_F           16 SNPPPNPEGT---RQARRNRRRRWRERQRQ   42 (57)
+Q Consensus        16 sNPyP~~~GT---rqaRRnRRRRWR~rqrQ   42 (57)
+                      .+|+|..||.   --.||||||||+++-..
+T Consensus        20 adpppgaegraphdagrrnrrrrwrqrsqh   49 (58)
+T UniRef100_A0A2   20 ADPPPGAEGRAPHDAGRRNRRRRWRQRSQH   49 (58)
+Confidence            4688888885   35699999999987543
+
+
+No 56
+>UniRef100_Q905H9 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905H9_9HIV1
+Probab=94.82  E-value=0.027  Score=30.67  Aligned_cols=16  Identities=50%  Similarity=0.991  Sum_probs=14.5  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      +||+..+.+||+||||
+T Consensus         4 dellttikiikilyqs   19 (19)
+T UniRef100_Q905    4 DELLTTIKIIKILYQS   19 (19)
+Confidence            4789999999999996
+
+
+No 57
+>UniRef100_Q99D93 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q99D93_9HIV1
+Probab=94.40  E-value=0.048  Score=31.26  Aligned_cols=15  Identities=60%  Similarity=1.028  Sum_probs=13.7  Template_Neff=1.000
+
+Q 6cf2_F            2 DLLKAVRLIKFLYQS   16 (57)
+Q Consensus         2 ~Ll~~vRlIk~LyQs   16 (57)
+                      .|++++.+||+||||
+T Consensus        10 qllraiqiikilyqs   24 (24)
+T UniRef100_Q99D   10 QLLRAIQIIKILYQS   24 (24)
+Confidence            589999999999996
+
+
+No 58
+>UniRef100_A0A7G6Y4B7 Uncharacterized protein n=1 Tax=Sphingomonas sp. NBWT7 TaxID=2596913 RepID=A0A7G6Y4B7_9SPHN
+Probab=94.07  E-value=0.071  Score=32.58  Aligned_cols=31  Identities=52%  Similarity=0.936  Sum_probs=24.4  Template_Neff=1.000
+
+Q 6cf2_F            6 AVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRE   38 (57)
+Q Consensus         6 ~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~   38 (57)
+                      .+|+|.+.|||-.  +|.-++..||.+|+-|+.
+T Consensus         1 mvrlialvyqsis--sparsrssrrtrrrdwrr   31 (33)
+T UniRef100_A0A7    1 MVRLIALVYQSIS--SPARSRSSRRTRRRDWRR   31 (33)
+Confidence            3789999999854  445567888999999975
+
+
+No 59
+>UniRef100_Q87577 Rev protein (Fragment) n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=Q87577_SIV
+Probab=93.53  E-value=0.12  Score=29.07  Aligned_cols=16  Identities=50%  Similarity=0.943  Sum_probs=14.2  Template_Neff=1.143
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||.+.+||||.||.+
+T Consensus         6 eel~rrfriik~ly~t   21 (21)
+T UniRef100_Q875    6 EELRRRFRIIKFLYTT   21 (21)
+Confidence            6899999999999963
+
+
+No 60
+>UniRef100_A0A650DHR3 Protein Rev (Fragment) n=2 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A650DHR3_9HIV1
+Probab=93.22  E-value=0.16  Score=29.63  Aligned_cols=16  Identities=63%  Similarity=0.987  Sum_probs=14.5  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |||++.+|+|+-||.|
+T Consensus        10 eellrtvrlirdlyrs   25 (25)
+T UniRef100_A0A6   10 EELLRTVRLIRDLYRS   25 (25)
+Confidence            6899999999999975
+
+
+No 61
+>UniRef100_Q99FH7 Protein Rev n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=Q99FH7_SIV
+Probab=93.21  E-value=0.16  Score=38.24  Aligned_cols=49  Identities=35%  Similarity=0.548  Sum_probs=38.5  Template_Neff=1.000
+
+Q 6cf2_F            5 KAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTY   54 (57)
+Q Consensus         5 ~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~   54 (57)
+                      .++|-|+.||..-|-|.. ||.++||.--.|-+..|.||.+|-.++...+
+T Consensus        24 sairrirvlhkhwprpgv-gtarqrrrntqrarkqqqqilaidgrvveql   72 (116)
+T UniRef100_Q99F   24 SAIRRIRVLHKHWPRPGV-GTARQRRRNTQRARKQQQQILAIDGRVVEQL   72 (116)
+Confidence            578889999998777754 7766666666778888999999998887654
+
+
+No 62
+>UniRef100_Q99DA8 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q99DA8_9HIV1
+Probab=93.13  E-value=0.17  Score=29.32  Aligned_cols=15  Identities=53%  Similarity=0.950  Sum_probs=13.6  Template_Neff=1.125
+
+Q 6cf2_F            2 DLLKAVRLIKFLYQS   16 (57)
+Q Consensus         2 ~Ll~~vRlIk~LyQs   16 (57)
+                      .|++.+.+||+||||
+T Consensus        10 qllqviqiikilyqs   24 (24)
+T UniRef100_Q99D   10 QLLQVIQIIKILYQS   24 (24)
+Confidence            588999999999996
+
+
+No 63
+>UniRef100_A0A6B9SH66 Protein Rev (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=A0A6B9SH66_9HIV1
+Probab=92.58  E-value=0.25  Score=28.89  Aligned_cols=16  Identities=69%  Similarity=0.893  Sum_probs=14.2  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |.|+.+.-+||+||||
+T Consensus        10 e~ll~a~~likilyqs   25 (25)
+T UniRef100_A0A6   10 EXLLXAXXLIKILYQS   25 (25)
+Confidence            5688999999999996
+
+
+No 64
+>UniRef100_Q905E7 Rev protein (Fragment) n=1 Tax=Human immunodeficiency virus 1 TaxID=11676 RepID=Q905E7_9HIV1
+Probab=92.47  E-value=0.27  Score=27.22  Aligned_cols=16  Identities=50%  Similarity=0.870  Sum_probs=14.2  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQS   16 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQs   16 (57)
+                      |.|+....+|++||||
+T Consensus         4 eglltvckiirilyqs   19 (19)
+T UniRef100_Q905    4 EGLLTVCKIIRILYQS   19 (19)
+Confidence            5688999999999996
+
+
+No 65
+>UniRef100_F4N9Q1 Rev protein n=1 Tax=Simian immunodeficiency virus TaxID=11723 RepID=F4N9Q1_SIV
+Probab=92.20  E-value=0.27  Score=39.00  Aligned_cols=47  Identities=26%  Similarity=0.475  Sum_probs=38.7  Template_Neff=1.980
+
+Q 6cf2_F            2 DLLKAVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLG   56 (57)
+Q Consensus         2 ~Ll~~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lg   56 (57)
+                      +|-+-++|-++|        .+-|.++||.+|-|-|....|+.++-||||.+.+.
+T Consensus         8 el~~YLkiSk~L--------eprT~RQRRR~R~R~R~hlHQLRavQERIF~sTve   54 (163)
+T UniRef100_F4N9    8 ELPRYLKISRIL--------EPRTARQRRRDRERQRKHLHQLRAVQERIFQSTVE   54 (163)
+Confidence            466677888887        33588889999999999999999999999987653
+
+
+No 66
+>UniRef100_UPI000E2B3521 Vpu n=1 Tax=Escherichia coli TaxID=562 RepID=UPI000E2B3521
+Probab=91.87  E-value=0.39  Score=36.50  Aligned_cols=23  Identities=52%  Similarity=0.648  Sum_probs=19.2  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPE   23 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~   23 (57)
+                      |.|++++.+||+||||.-|.-.+
+T Consensus        10 eallqavkiikilyqsskyhmve   32 (117)
+T UniRef100_UPI0   10 EALLQAVKIIKILYQSSKYHMVE   32 (117)
+Confidence            57899999999999998775443
+
+
+No 67
+>UniRef100_K2NAG2 Secreted protein (Fragment) n=1 Tax=Trypanosoma cruzi marinkellei TaxID=85056 RepID=K2NAG2_TRYCR
+Probab=90.85  E-value=0.64  Score=34.39  Aligned_cols=18  Identities=61%  Similarity=1.020  Sum_probs=15.0  Template_Neff=1.000
+
+Q 6cf2_F           21 NPEGTRQARRNRRRRWRE   38 (57)
+Q Consensus        21 ~~~GTrqaRRnRRRRWR~   38 (57)
+                      +.|||++.||.|||||=-
+T Consensus        52 sregtrrrrrrrrrrwww   69 (94)
+T UniRef100_K2NA   52 SREGTRRRRRRRRRRWWW   69 (94)
+Confidence            468999999999999853
+
+
+No 68
+>UniRef100_A0A2T2N364 Uncharacterized protein n=1 Tax=Corynespora cassiicola Philippines TaxID=1448308 RepID=A0A2T2N364_CORCC
+Probab=90.60  E-value=0.71  Score=35.30  Aligned_cols=26  Identities=58%  Similarity=1.041  Sum_probs=16.7  Template_Neff=1.000
+
+Q 6cf2_F           12 FLYQSNPPPNPEGTRQARRNRRRRWRE   38 (57)
+Q Consensus        12 ~LyQsNPyP~~~GTrqaRRnRRRRWR~   38 (57)
+                      .||-| |.|.|.|++..|+.+|++-+.
+T Consensus         7 vlyps-piprpkgsrrrrrrrrrrrrr   32 (118)
+T UniRef100_A0A2    7 VLYPS-PIPRPKGSRRRRRRRRRRRRR   32 (118)
+Confidence            45655 888899987666555444333
+
+
+No 69
+>UniRef100_A0A6A5LT68 Uncharacterized protein n=1 Tax=Lupinus albus TaxID=3870 RepID=A0A6A5LT68_LUPAL
+Probab=90.21  E-value=0.83  Score=34.81  Aligned_cols=40  Identities=43%  Similarity=0.736  Sum_probs=28.9  Template_Neff=1.000
+
+Q 6cf2_F           13 LYQSNPPPNPEGTRQARRNRRRRWRERQ-----RQIHSISERILS   52 (57)
+Q Consensus        13 LyQsNPyP~~~GTrqaRRnRRRRWR~rq-----rQi~~is~rIls   52 (57)
+                      |+..-..|.|.|-+..||.|||||..-.     -.|.+|.+.+|+
+T Consensus        38 lhsavakptpqgirdrrrrrrrrwqgvrlrkhefaiiaiqesvls   82 (114)
+T UniRef100_A0A6   38 LHSAVAKPTPQGIRDRRRRRRRRWQGVRLRKHEFAIIAIQESVLS   82 (114)
+Confidence            4555667889999999999999997632     235566666655
+
+
+No 70
+>UniRef100_A0A920N0G7 Uncharacterized protein n=1 Tax=Planctomycetaceae bacterium TaxID=2026779 RepID=A0A920N0G7_9PLAN
+Probab=88.96  E-value=1.3  Score=35.79  Aligned_cols=30  Identities=47%  Similarity=0.945  Sum_probs=23.1  Template_Neff=1.000
+
+Q 6cf2_F           15 QSNPPPNPEG----TRQARRNRRRRWRERQRQIH   44 (57)
+Q Consensus        15 QsNPyP~~~G----TrqaRRnRRRRWR~rqrQi~   44 (57)
+                      .||.+|.|+.    +.+-||.-|.||++.|+|++
+T Consensus       137 ssnafpdpealkglskrerrrmrkrwrqqqrqmd  170 (171)
+T UniRef100_A0A9  137 SSNAFPDPEALKGLSKRERRRMRKRWRQQQRQMD  170 (171)
+Confidence            3577787754    45667788899999999975
+
+
+No 71
+>UniRef100_A0A822YN58 Uncharacterized protein n=1 Tax=Nelumbo nucifera TaxID=4432 RepID=A0A822YN58_NELNU
+Probab=88.72  E-value=1.4  Score=29.84  Aligned_cols=23  Identities=39%  Similarity=0.794  Sum_probs=19.8  Template_Neff=1.000
+
+Q 6cf2_F           15 QSNPPPNPEGTRQARRNRRRRWR   37 (57)
+Q Consensus        15 QsNPyP~~~GTrqaRRnRRRRWR   37 (57)
+                      .|||||..+|..-+||--|.-|-
+T Consensus        28 hsnpypdrpgcsiqrrtsrkswt   50 (51)
+T UniRef100_A0A8   28 HSNPYPDRPGCSIQRRTSRKSWT   50 (51)
+Confidence            48999999999888888888773
+
+
+No 72
+>UniRef100_A0A7R9TEG3 Uncharacterized protein n=1 Tax=Micromonas pusilla TaxID=38833 RepID=A0A7R9TEG3_MICPS
+Probab=88.28  E-value=1.6  Score=32.90  Aligned_cols=23  Identities=48%  Similarity=0.915  Sum_probs=18.9  Template_Neff=1.000
+
+Q 6cf2_F           16 SNPPPNPEGTRQARRNRRRRWRE   38 (57)
+Q Consensus        16 sNPyP~~~GTrqaRRnRRRRWR~   38 (57)
+                      |...|...||.+.||.+||||-+
+T Consensus        77 setdpkragtarsrrrrrrrwaa   99 (100)
+T UniRef100_A0A7   77 SETDPKRAGTARSRRRRRRRWAA   99 (100)
+Confidence            34567788999999999999964
+
+
+No 73
+>UniRef100_P22379 Protein Rev n=1 Tax=Simian immunodeficiency virus (isolate GB1) TaxID=11732 RepID=REV_SIVGB
+Probab=88.16  E-value=1.6  Score=31.94  Aligned_cols=48  Identities=35%  Similarity=0.625  Sum_probs=36.8  Template_Neff=1.000
+
+Q 6cf2_F            6 AVRLIKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQIHSISERILSTYLGR   57 (57)
+Q Consensus         6 ~vRlIk~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi~~is~rIls~~lgr   57 (57)
+                      -+=.+|.||.. |.|   -|.++||.|....+.+..|+..+-.+||..+|.|
+T Consensus        14 ylvvvkklyee-pip---qtarqrrrrkqqlrtrraqlrelegrilkqildr   61 (83)
+T UniRef100_P223   14 YLVVVKKLYEE-PIP---QTARQRRRRKQQLRTRRAQLRELEGRILKQILDR   61 (83)
+Confidence            34467788874 444   4677788888888899999999999999887754
+
+
+No 74
+>UniRef100_F9S4F7 Uncharacterized protein n=1 Tax=Vibrio ichthyoenteri ATCC 700023 TaxID=870968 RepID=F9S4F7_9VIBR
+Probab=86.99  E-value=2.2  Score=28.03  Aligned_cols=16  Identities=63%  Similarity=0.897  Sum_probs=14.8  Template_Neff=1.000
+
+Q 6cf2_F            3 LLKAVRLIKFLYQSNP   18 (57)
+Q Consensus         3 Ll~~vRlIk~LyQsNP   18 (57)
+                      |+.++|++|.|+.|||
+T Consensus        27 llaairllkvlhasnp   42 (42)
+T UniRef100_F9S4   27 LLAAIRLLKVLHASNP   42 (42)
+Confidence            6789999999999997
+
+
+No 75
+>UniRef100_A0A5B7JGK2 Uncharacterized protein n=1 Tax=Portunus trituberculatus TaxID=210409 RepID=A0A5B7JGK2_PORTR
+Probab=81.90  E-value=5.9  Score=28.14  Aligned_cols=13  Identities=62%  Similarity=0.997  Sum_probs=5.5  Template_Neff=1.000
+
+Q 6cf2_F           22 PEGTRQARRNRRR   34 (57)
+Q Consensus        22 ~~GTrqaRRnRRR   34 (57)
+                      |..|+..||.+|+
+T Consensus        28 prqtrrrrrrrrr   40 (62)
+T UniRef100_A0A5   28 PRQTRRRRRRRRR   40 (62)
+Confidence            3345444444333
+
+
+No 76
+>UniRef100_A0A8K0XAW8 Uncharacterized protein n=1 Tax=Phlebopus sp. FC_14 TaxID=2615122 RepID=A0A8K0XAW8_9AGAM
+Probab=79.97  E-value=7.7  Score=34.59  Aligned_cols=22  Identities=50%  Similarity=0.827  Sum_probs=19.1  Template_Neff=1.000
+
+Q 6cf2_F           12 FLYQSNPPPNPEGTRQARRNRR   33 (57)
+Q Consensus        12 ~LyQsNPyP~~~GTrqaRRnRR   33 (57)
+                      -.+|+||+|+|.=++++|||-.
+T Consensus       220 pfhqtnpppppdlsrrarrnds  241 (337)
+T UniRef100_A0A8  220 PFHQTNPPPPPDLSRRARRNDS  241 (337)
+Confidence            4689999999999999999854
+
+
+No 77
+>UniRef100_A0A4R4XJX2 Uncharacterized protein n=1 Tax=Actinomadura sp. KC06 TaxID=2530369 RepID=A0A4R4XJX2_9ACTN
+Probab=79.45  E-value=7.9  Score=28.14  Aligned_cols=22  Identities=50%  Similarity=0.874  Sum_probs=18.8  Template_Neff=1.333
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNP   22 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~   22 (57)
+                      ++|-++++.|++.|.|.|+|.+
+T Consensus        25 ddldrav~a~~lvhgs~ppp~~   46 (69)
+T UniRef100_A0A4   25 DDLDRAVRAIELVHGSKPPPPP   46 (69)
+Confidence            4688999999999999887763
+
+
+No 78
+>UniRef100_E0VCN2 Transmembrane protein n=1 Tax=Pediculus humanus subsp. corporis TaxID=121224 RepID=E0VCN2_PEDHC
+Probab=73.32  E-value=16  Score=30.90  Aligned_cols=22  Identities=50%  Similarity=0.901  Sum_probs=17.6  Template_Neff=1.000
+
+Q 6cf2_F            2 DLLKAVRLIKFLYQSNPPPNPE   23 (57)
+Q Consensus         2 ~Ll~~vRlIk~LyQsNPyP~~~   23 (57)
+                      ++.+++.+|-+++.||.+|+|+
+T Consensus        55 diqravkligfihssnappppp   76 (195)
+T UniRef100_E0VC   55 DIQRAVKLIGFIHSSNAPPPPP   76 (195)
+Confidence            4678999999999998666653
+
+
+No 79
+>UniRef100_A0A832I930 Uncharacterized protein n=1 Tax=Candidatus Amesbacteria bacterium TaxID=1932011 RepID=A0A832I930_9BACT
+Probab=71.82  E-value=19  Score=28.77  Aligned_cols=17  Identities=47%  Similarity=0.686  Sum_probs=14.6  Template_Neff=1.000
+
+Q 6cf2_F            9 LIKFLYQSNPPPNPEGT   25 (57)
+Q Consensus         9 lIk~LyQsNPyP~~~GT   25 (57)
+                      .||+|.|+||.|+.+.|
+T Consensus        51 aikilsqtnphpsspat   67 (122)
+T UniRef100_A0A8   51 AIKILSQTNPHPSSPAT   67 (122)
+Confidence            37999999999997766
+
+
+No 80
+>UniRef100_UPI00067EEE87 hypothetical protein n=1 Tax=Bradyrhizobium viridifuturi TaxID=1654716 RepID=UPI00067EEE87
+Probab=71.30  E-value=20  Score=30.62  Aligned_cols=22  Identities=32%  Similarity=0.655  Sum_probs=17.4  Template_Neff=1.000
+
+Q 6cf2_F            6 AVRLIKFLYQSNPPPNPEGTRQ   27 (57)
+Q Consensus         6 ~vRlIk~LyQsNPyP~~~GTrq   27 (57)
+                      -.-..++||.+.|||+++|-..
+T Consensus       104 eyfvarflyetspypsgegeat  125 (202)
+T UniRef100_UPI0  104 EYFVARFLYETSPYPSGEGEAT  125 (202)
+Confidence            3446789999999999999543
+
+
+No 81
+>UniRef100_A0A433DMQ3 Conserved oligomeric Golgi complex subunit 1 n=1 Tax=Jimgerdemannia flammicorona TaxID=994334 RepID=A0A433DMQ3_9FUNG
+Probab=71.13  E-value=20  Score=32.60  Aligned_cols=22  Identities=59%  Similarity=1.019  Sum_probs=13.7  Template_Neff=1.000
+
+Q 6cf2_F           17 NPPPNPEGTRQARRNRRRRWRE   38 (57)
+Q Consensus        17 NPyP~~~GTrqaRRnRRRRWR~   38 (57)
+                      .|.|+|+|.+-.||.+|+|-+.
+T Consensus       269 apepppegprgrrrrrrrrhrr  290 (354)
+T UniRef100_A0A4  269 APEPPPEGPRGRRRRRRRRHRR  290 (354)
+Confidence            5778888876655555544443
+
+
+No 82
+>UniRef100_A0A1V1TH13 Shugoshin C-terminal domain-containing protein n=1 Tax=Xylariales sp. No.14919 TaxID=1813822 RepID=A0A1V1TH13_9PEZI
+Probab=66.50  E-value=30  Score=29.97  Aligned_cols=24  Identities=46%  Similarity=1.044  Sum_probs=20.1  Template_Neff=1.000
+
+Q 6cf2_F           17 NPPPNPEGTRQARRNRRRRWRERQ   40 (57)
+Q Consensus        17 NPyP~~~GTrqaRRnRRRRWR~rq   40 (57)
+                      +|.|.|+||.-.-..-||||+...
+T Consensus       139 dpvpgpegtktkpkrtrrrwrgka  162 (214)
+T UniRef100_A0A1  139 DPVPGPEGTKTKPKRTRRRWRGKA  162 (214)
+Confidence            688999999888888889998643
+
+
+No 83
+>UniRef100_UPI001EFA6083 hypothetical protein n=1 Tax=Mammaliicoccus sp. N-M50 TaxID=2898709 RepID=UPI001EFA6083
+Probab=64.67  E-value=34  Score=25.61  Aligned_cols=26  Identities=46%  Similarity=0.597  Sum_probs=22.6  Template_Neff=1.000
+
+Q 6cf2_F            1 EDLLKAVRLIKFLYQSNPPPNPEGTR   26 (57)
+Q Consensus         1 e~Ll~~vRlIk~LyQsNPyP~~~GTr   26 (57)
+                      |+.++.+-+||.|...||..-+.||-
+T Consensus        41 edvlktlelikelkkpnptaigkgti   66 (74)
+T UniRef100_UPI0   41 EDVLKTLELIKELKKPNPTAIGKGTI   66 (74)
+Confidence            57889999999999999888888873
+
+
+No 84
+>UniRef100_A0A834U7N7 Uncharacterized protein n=1 Tax=Vespula pensylvanica TaxID=30213 RepID=A0A834U7N7_VESPE
+Probab=64.52  E-value=34  Score=25.53  Aligned_cols=27  Identities=48%  Similarity=0.727  Sum_probs=13.0  Template_Neff=1.000
+
+Q 6cf2_F           28 ARRNRRRRWRERQRQIHSISERILSTY   54 (57)
+Q Consensus        28 aRRnRRRRWR~rqrQi~~is~rIls~~   54 (57)
+                      .||.+|+|-+.+.+|-..|....|.++
+T Consensus        41 qrrrrrrrrrrrrrqqrqimkkmlhti   67 (73)
+T UniRef100_A0A8   41 QRRRRRRRRRRRRRQQRQIMKKMLHTI   67 (73)
+Confidence            344444444444444455555555544
+
+
+No 85
+>UniRef100_UPI00027F35B7 uncharacterized protein LOC101003274 n=1 Tax=Papio anubis TaxID=9555 RepID=UPI00027F35B7
+Probab=61.25  E-value=42  Score=28.25  Aligned_cols=18  Identities=56%  Similarity=1.158  Sum_probs=11.8  Template_Neff=1.134
+
+Q 6cf2_F           17 NPPPNPEGTRQARRNRRR   34 (57)
+Q Consensus        17 NPyP~~~GTrqaRRnRRR   34 (57)
+                      .|+|.|.|+...||.+|+
+T Consensus        32 pppp~pagsarrrrrrrr   49 (163)
+T UniRef100_UPI0   32 PPPPSPAGSARRRRRRRR   49 (163)
+Confidence            577788887655554444
+
+
+No 86
+>UniRef100_A0A6P9FMZ7 Cold-regulated protein 1-like n=1 Tax=Zalophus californianus TaxID=9704 RepID=A0A6P9FMZ7_ZALCA
+Probab=61.23  E-value=43  Score=27.26  Aligned_cols=21  Identities=67%  Similarity=1.063  Sum_probs=13.7  Template_Neff=1.000
+
+Q 6cf2_F           22 PEGTRQARRNRRRRWRERQRQ   42 (57)
+Q Consensus        22 ~~GTrqaRRnRRRRWR~rqrQ   42 (57)
+                      |||.+..|+.+|++-+++|+-
+T Consensus        97 pegprrrrrrrrrrrrarqrp  117 (128)
+T UniRef100_A0A6   97 PEGPRRRRRRRRRRRRARQRP  117 (128)
+Confidence            456666666677776777653
+
+
+No 87
+>UniRef100_A0A938QYN1 Uncharacterized protein n=1 Tax=Deltaproteobacteria bacterium TaxID=2026735 RepID=A0A938QYN1_UNCDE
+Probab=59.65  E-value=48  Score=24.82  Aligned_cols=28  Identities=46%  Similarity=0.930  Sum_probs=18.7  Template_Neff=1.000
+
+Q 6cf2_F           16 SNPPPNPEGTRQARRNRRRRWRERQRQI   43 (57)
+Q Consensus        16 sNPyP~~~GTrqaRRnRRRRWR~rqrQi   43 (57)
+                      ..|+|+|..++.+|+.+-++-+-+.+.+
+T Consensus         7 prpppsppasrrqrrrrprrarprrrrl   34 (72)
+T UniRef100_A0A9    7 PRPPPSPPASRRQRRRRPRRARPRRRRL   34 (72)
+Confidence            4578888888877777666655544433
+
+
+No 88
+>UniRef100_A0A3D4SZ87 Uncharacterized protein n=1 Tax=Corynebacterium nuruki TaxID=1032851 RepID=A0A3D4SZ87_9CORY
+Probab=56.67  E-value=59  Score=23.86  Aligned_cols=19  Identities=53%  Similarity=0.880  Sum_probs=14.7  Template_Neff=1.000
+
+Q 6cf2_F           16 SNPPPNPEGTRQARRNRRR   34 (57)
+Q Consensus        16 sNPyP~~~GTrqaRRnRRR   34 (57)
+                      +.|.|++..|+.+.|.+|+
+T Consensus        44 trpcpsppstrsagrrrrr   62 (62)
+T UniRef100_A0A3   44 TRPCPSPPSTRSAGRRRRR   62 (62)
+Confidence            3577889999998877654
+
+
+No 89
+>UniRef100_A0A830H4J6 Uncharacterized protein n=1 Tax=Pycnococcus provasolii TaxID=41880 RepID=A0A830H4J6_9CHLO
+Probab=55.93  E-value=62  Score=29.73  Aligned_cols=23  Identities=52%  Similarity=0.930  Sum_probs=15.1  Template_Neff=1.000
+
+Q 6cf2_F           13 LYQSNPPPNPEGTRQARRNRRRR   35 (57)
+Q Consensus        13 LyQsNPyP~~~GTrqaRRnRRRR   35 (57)
+                      |--|.|+|+|+||-...|.|||.
+T Consensus       157 lgpspppppppgtpksqrrrrrk  179 (322)
+T UniRef100_A0A8  157 LGPSPPPPPPPGTPKSQRRRRRK  179 (322)
+Confidence            34467888899996655555443
+
+
+No 90
+>UniRef100_A0A933K3C7 Uncharacterized protein n=1 Tax=Candidatus Riflebacteria bacterium TaxID=2053586 RepID=A0A933K3C7_9BACT
+Probab=55.25  E-value=64  Score=29.70  Aligned_cols=24  Identities=50%  Similarity=0.942  Sum_probs=20.4  Template_Neff=1.000
+
+Q 6cf2_F           11 KFLYQSNPPPNPEGTRQARRNRRR   34 (57)
+Q Consensus        11 k~LyQsNPyP~~~GTrqaRRnRRR   34 (57)
+                      .+|+...|.|.|..|+..||.|||
+T Consensus       302 eflhdgppapepqdtrpprrsrrr  325 (328)
+T UniRef100_A0A9  302 EFLHDGPPAPEPQDTRPPRRSRRR  325 (328)
+Confidence            467888999999999998888775
+
+
+No 91
+>UniRef100_A0A934YLM9 Uncharacterized protein n=1 Tax=Myxococcales bacterium TaxID=2026763 RepID=A0A934YLM9_UNCMY
+Probab=52.94  E-value=75  Score=25.63  Aligned_cols=23  Identities=43%  Similarity=0.612  Sum_probs=12.8  Template_Neff=1.000
+
+Q 6cf2_F           11 KFLYQSNPPPNPEGTRQARRNRR   33 (57)
+Q Consensus        11 k~LyQsNPyP~~~GTrqaRRnRR   33 (57)
+                      |.|..|-|.|++.|-.+.||.||
+T Consensus        80 kvlsasfpappgaggarrrrrrr  102 (111)
+T UniRef100_A0A9   80 KVLSASFPAPPGAGGARRRRRRR  102 (111)
+Confidence            55666666666666544444333
+
+
+No 92
+>UniRef100_A0A1W0VTD3 Uncharacterized protein n=1 Tax=Sorghum bicolor TaxID=4558 RepID=A0A1W0VTD3_SORBI
+Probab=50.12  E-value=82  Score=27.65  Aligned_cols=32  Identities=34%  Similarity=0.753  Sum_probs=21.2  Template_Neff=1.530
+
+Q 6cf2_F           12 FLYQSNPPPNPEGTRQARRNRRRRWRERQRQI   43 (57)
+Q Consensus        12 ~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi   43 (57)
+                      +|-+..+.|...|-|+.+..-|||||...+..
+T Consensus       148 llaa~p~~~~~~~rrrg~~r~rrrwrrkrrk~  179 (199)
+T UniRef100_A0A1  148 LLAAQPSPSPGHGRRRGRGRPRRRWRRKRRKV  179 (199)
+Confidence            34555555566777777767789999765543
+
+
+No 93
+>UniRef100_A0A165QBE9 MYND-type domain-containing protein n=1 Tax=Exidia glandulosa HHB12029 TaxID=1314781 RepID=A0A165QBE9_EXIGL
+Probab=45.55  E-value=1.2e+02  Score=29.72  Aligned_cols=29  Identities=45%  Similarity=0.685  Sum_probs=25.5  Template_Neff=1.000
+
+Q 6cf2_F            3 LLKAVRLIKFLYQSNPPPNPEGTRQARRN   31 (57)
+Q Consensus         3 Ll~~vRlIk~LyQsNPyP~~~GTrqaRRn   31 (57)
+                      |+.+||-+.+||..|..|.|..|...|-|
+T Consensus        86 lldavrglshlyrdnaipkphattskran  114 (515)
+T UniRef100_A0A1   86 LLDAVRGLSHLYRDNAIPKPHATTSKRAN  114 (515)
+Confidence            78899999999999999999888766655
+
+
+No 94
+>UniRef100_A0A914AAA5 Uncharacterized protein n=1 Tax=Patiria miniata TaxID=46514 RepID=A0A914AAA5_PATMI
+Probab=44.47  E-value=1.2e+02  Score=31.49  Aligned_cols=18  Identities=56%  Similarity=0.994  Sum_probs=12.8  Template_Neff=1.000
+
+Q 6cf2_F           14 YQSNPPPNPEGTRQARRN   31 (57)
+Q Consensus        14 yQsNPyP~~~GTrqaRRn   31 (57)
+                      |.|||||.|.|||-+--|
+T Consensus       761 ynsnpypdpngtrdqpgn  778 (1031)
+T UniRef100_A0A9  761 YNSNPYPDPNGTRDQPGN  778 (1031)
+Confidence            667888888888765433
+
+
+No 95
+>UniRef100_A0A085MPQ7 Uncharacterized protein (Fragment) n=1 Tax=Trichuris suis TaxID=68888 RepID=A0A085MPQ7_9BILA
+Probab=41.28  E-value=1.5e+02  Score=22.87  Aligned_cols=17  Identities=29%  Similarity=0.051  Sum_probs=12.0  Template_Neff=1.000
+
+Q 6cf2_F           10 IKFLYQSNPPPNPEGTR   26 (57)
+Q Consensus        10 Ik~LyQsNPyP~~~GTr   26 (57)
+                      -..||||-.|-...|-+
+T Consensus        11 pnelhqsiqygatgggr   27 (76)
+T UniRef100_A0A0   11 PNELHQSIQYGATGGGR   27 (76)
+Confidence            35689998888766643
+
+
+No 96
+>UniRef100_A0A6A4W1V0 Piwi-like protein Siwi n=1 Tax=Amphibalanus amphitrite TaxID=1232801 RepID=A0A6A4W1V0_AMPAM
+Probab=38.31  E-value=1.8e+02  Score=26.26  Aligned_cols=33  Identities=36%  Similarity=0.612  Sum_probs=20.7  Template_Neff=1.000
+
+Q 6cf2_F           10 IKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQ   42 (57)
+Q Consensus        10 Ik~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQ   42 (57)
+                      |.+|+||.-.|+|.|..+.|-.-|-|-.+.|.|
+T Consensus         7 inllfqstmeppptgrargrargrgrsqqqqqq   39 (229)
+T UniRef100_A0A6    7 INLLFQSTMEPPPTGRARGRARGRGRSQQQQQQ   39 (229)
+Confidence            678999987777777655544444444444444
+
+
+No 97
+>UniRef100_A0A0E0FBB3 Uncharacterized protein n=1 Tax=Oryza meridionalis TaxID=40149 RepID=A0A0E0FBB3_9ORYZ
+Probab=36.84  E-value=2e+02  Score=25.88  Aligned_cols=24  Identities=54%  Similarity=1.038  Sum_probs=17.9  Template_Neff=1.000
+
+Q 6cf2_F           17 NPPPNPEGTRQARRNRRRRWRERQ   40 (57)
+Q Consensus        17 NPyP~~~GTrqaRRnRRRRWR~rq   40 (57)
+                      .|.|.+.-|+-.||.+-+||+.+-
+T Consensus        77 spsppppptrpgrrrrprrwrtrp  100 (216)
+T UniRef100_A0A0   77 SPSPPPPPTRPGRRRRPRRWRTRP  100 (216)
+Confidence            345556678888999999998753
+
+
+No 98
+>UniRef100_A0A7S0EEW5 Uncharacterized protein (Fragment) n=1 Tax=Phaeocystis antarctica TaxID=33657 RepID=A0A7S0EEW5_9EUKA
+Probab=34.97  E-value=2.2e+02  Score=23.74  Aligned_cols=26  Identities=46%  Similarity=0.953  Sum_probs=17.2  Template_Neff=1.000
+
+Q 6cf2_F           17 NPPPNPEGTRQARRNRRRRWRERQRQ   42 (57)
+Q Consensus        17 NPyP~~~GTrqaRRnRRRRWR~rqrQ   42 (57)
+                      .|+|.|.-.+-.|+.-|.-|+.+.+.
+T Consensus         9 ppppkpppprpprrrlrqgwrrrlrk   34 (121)
+T UniRef100_A0A7    9 PPPPKPPPPRPPRRRLRQGWRRRLRK   34 (121)
+Confidence            45555555677777777788876554
+
+
+No 99
+>UniRef100_A0A0P0X8Q1 Os07g0603750 protein n=1 Tax=Oryza sativa subsp. japonica TaxID=39947 RepID=A0A0P0X8Q1_ORYSJ
+Probab=26.57  E-value=3.8e+02  Score=24.54  Aligned_cols=30  Identities=50%  Similarity=0.743  Sum_probs=21.1  Template_Neff=1.000
+
+Q 6cf2_F           16 SNPPPNPEGTRQARRNRRRRWRERQRQIHS   45 (57)
+Q Consensus        16 sNPyP~~~GTrqaRRnRRRRWR~rqrQi~~   45 (57)
+                      |.|.|...|-+..-+-++++-+.+.+|+.+
+T Consensus       188 ssplpggrggrrrsrprrrrrrrrlrqlas  217 (222)
+T UniRef100_A0A0  188 SSPLPGGRGGRRRSRPRRRRRRRRLRQLAS  217 (222)
+Confidence            458888888766666666776777777644
+
+
+No 100
+>UniRef100_A0A7K2ZY94 LacI family DNA-binding transcriptional regulator n=1 Tax=Streptomyces sp. SID8379 TaxID=2690359 RepID=A0A7K2ZY94_9ACTN
+Probab=22.62  E-value=5e+02  Score=24.97  Aligned_cols=34  Identities=38%  Similarity=0.685  Sum_probs=23.4  Template_Neff=1.000
+
+Q 6cf2_F           10 IKFLYQSNPPPNPEGTRQARRNRRRRWRERQRQI   43 (57)
+Q Consensus        10 Ik~LyQsNPyP~~~GTrqaRRnRRRRWR~rqrQi   43 (57)
+                      |+.+....|+|.|.||-..|..+-+.-+++|--+
+T Consensus       198 iraimarppppapagttsgrsrrprphrarqpvv  231 (319)
+T UniRef100_A0A7  198 IRAIMARPPPPAPAGTTSGRSRRPRPHRARQPVV  231 (319)
+Confidence            4445566788889999877776666666665433
+
+
