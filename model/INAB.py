@@ -69,7 +69,6 @@ class INAB(nn.Module):
                 nn.Linear(128,1),
             )
 
-        
     def forward(self,node_feats,coords,edges,edge_attr):
         if self.args.order=="ME":
             h=self.emmbedding(node_feats).unsqueeze(dim=0) #(batch,seq_len,feat_dim)

@@ -103,8 +103,7 @@ def run_esm2(prot_list):
     model = model.to(device)
     batch_converter = alphabet.get_batch_converter()
     model.eval()  # disables dropout for deterministic results
-    for i,prot in enumerate(prot_list):
-        print(f"Processing {prot}...")
+    for prot in tqdm(prot_list,desc="ESM-2"):
         if os.path.isfile(f'{HOME_DIR}/features/{prot}.esm2.npy'):
             continue
         try:
@@ -115,13 +114,8 @@ def run_esm2(prot_list):
             batch_labels, batch_strs, batch_tokens = batch_converter(data)
             batch_lens = (batch_tokens != alphabet.padding_idx).sum(1)
             batch_tokens=batch_tokens.to(device)
-            start_time=time.time()
             with torch.no_grad():
                 results = model(batch_tokens, repr_layers=[33], return_contacts=True)
-
-            end_time=time.time()
-            inference_time=end_time-start_time
-            print(f"inference_time = {inference_time:.0f} seconds")
         except Exception as e:
             print(e)
             continue
@@ -131,9 +125,8 @@ def run_esm2(prot_list):
             prot_name=tuple[0]
             prot_length=len(tuple[1])
             assert prot_length==rep.shape[0]
-            rep_numpy = rep.cpu().numpy()
+            rep_numpy = rep.detach().cpu().numpy()
             np.save(f'{HOME_DIR}/features/{prot}.esm2.npy', rep_numpy)
-            print(f"Processed {i}/{len(prot_list)} proteins.")
 
 def run_saprot(prot_list):
     
@@ -201,8 +194,7 @@ def run_saprot(prot_list):
     model = EsmForMaskedLM.from_pretrained(model_path)
     model.to(device)
     model.eval() 
-    for i,prot in enumerate(prot_list):
-        print(f"Processing {prot}...")
+    for prot in tqdm(prot_list,desc="SaProt"):
         if os.path.isfile(f'{HOME_DIR}/features/{prot}.saprot.npy'):
             continue
         pdb_path=f'{HOME_DIR}/features/{prot}.pdb'
@@ -220,21 +212,16 @@ def run_saprot(prot_list):
 
             inputs = tokenizer(combined_seq, return_tensors="pt")
             inputs = {k: v.to(device) for k, v in inputs.items()}
-            start_time=time.time()
             with torch.no_grad():
                 outputs = model(**inputs)
-            end_time=time.time()
-            inference_time=end_time-start_time
-            print(f"inference_time = {inference_time:.0f} seconds")
-            outputs = outputs.logits.squeeze(0)[1:-1,:]
-            torch.save(outputs,f'{HOME_DIR}/features/{prot}.saprot.npy')
-            print(f"Processed {i}/{len(prot_list)} proteins.")
+            outputs = outputs.logits.squeeze(0)
+            outputs = outputs.detach().cpu().numpy()[1:-1,:]
+            np.save(f'{HOME_DIR}/features/{prot}.saprot.npy', outputs)
         except Exception as e:
             print(e)
             continue
 
-def run_gearnet(prot_list):
-    class MyProteinDataset(data.ProteinDataset):
+class GearNetProteinDataset(data.ProteinDataset):
         def __init__(self, pdb_files,transform=None, lazy=False,num_processes=16):
             super().__init__()
             self.transform = transform
@@ -249,7 +236,7 @@ def run_gearnet(prot_list):
 
             with mp.Pool(num_processes) as pool:
                 results=pool.imap_unordered(self.build_protein, pdb_files)
-                pbar=tqdm(total=len(pdb_files),desc="Loading PDB files")
+                pbar=tqdm(total=len(pdb_files),desc="GearNet Loading PDB files")
                 for result in results:
                     pbar.update()
                     if result:
@@ -280,6 +267,7 @@ def run_gearnet(prot_list):
             
             return protein,pdb_file
 
+def run_gearnet(prot_list):
 
     model = models.GearNet(input_dim=21, hidden_dims=[512, 512, 512,512,512,512], 
                             num_relation=7, edge_input_dim=59, num_angle_bin=8,
@@ -300,13 +288,13 @@ def run_gearnet(prot_list):
     transform = transforms.Compose([protein_view_transform])
 
     pdb_files=[f"{HOME_DIR}/features/{prot}.pdb" for prot in prot_list]
-    dataset=MyProteinDataset(pdb_files,transform=transform, lazy=False,num_processes=32)
+    dataset=GearNetProteinDataset(pdb_files,transform=transform, lazy=False,num_processes=32)
 
     filenames = dataset.pdb_files
-    dataset = tqdm(dataset, f"Running Model")
+    dataset = tqdm(dataset, f"GearNet")
     for i,e in enumerate(dataset):
         prot_name=os.path.basename(filenames[i]).split(".")[0]
-        if os.path.isfile(f"../data/{prot_name}/{prot_name}.gearnet.npy"):
+        if os.path.isfile(f"{HOME_DIR}/features/{prot_name}.gearnet.npy"):
             continue
         try:
             protein = e['graph']
@@ -314,18 +302,18 @@ def run_gearnet(prot_list):
             protein_ = graph_construction_model(_protein).to(device)
             rep = model.forward(protein_, protein_.node_feature.float())
             rep=rep['node_feature'].detach().cpu().numpy()
-            np.save(f"../data/{prot_name}/{prot_name}.gearnet.npy",rep)
+            np.save(f"{HOME_DIR}/features/{prot_name}.gearnet.npy",rep)
         except Exception as e:
             print(f"{prot_name} error: {e}")
             continue
 
 if __name__ == "__main__":
-    BLAST = './lib/psiblast'
+    BLAST = '../lib/psiblast'
     BLAST_DB = ''
-    HHBLITS = './lib/hhblits'
+    HHBLITS = '../lib/hhblits'
     HH_DB = ''
-    FOLDSEEK = './lib/foldseek'
-    DSSP="./lib/dssp"
+    FOLDSEEK = '../lib/foldseek'
+    DSSP="../lib/dssp"
 
     HOME_DIR='../demo/6cf2_F'
 

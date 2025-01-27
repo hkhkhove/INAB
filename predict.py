@@ -6,16 +6,16 @@ import numpy as np
 import torch
 import pickle
 from tqdm import tqdm
+import tyro
 
 torch.set_grad_enabled(False)
 
 @dataclass
 class Args:
-    gpu:int=3
-    task:str="dna"
+    gpu:int=0
     mode:str="regression"
     model_path:str="pretrained_models/INAB_DNA_model.pth"
-    input_path:str="demo/5f7q_E/5f7q_E_features.pkl"
+    input_features:str="demo/5f7q_E/5f7q_E_features.pkl"
     d_model:int=512
     num_seq_model_layers:int=3
     num_egnn_layers:int=4
@@ -63,11 +63,11 @@ def evaluate(model,device,input_data):
     return outputs
     
 if "__main__"==__name__:
-    args=Args()
+    args=tyro.cli(Args)
    
-    device = torch.device(f"cuda:{args.gpu}" if torch.cuda.is_available() else "cpu")
+    device = torch.device(f"cuda:{args.gpu}")
     
-    with open(args.input_path,'rb') as f:
+    with open(args.input_features,'rb') as f:
         input_data=pickle.load(f)
 
     model=INAB(args)

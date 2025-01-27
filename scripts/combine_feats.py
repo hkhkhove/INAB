@@ -285,7 +285,7 @@ def normalize_np_array(np_array, p=2, axis=0):
     normalized_array = np_array / norm
     return normalized_array
 
-def fusion(HOME_DIR,prot_list,name,ligand='dna',label=True):
+def combine(HOME_DIR,prot_list,name,ligand='dna',label=True):
     features=[]
     labels=[]
     
@@ -355,10 +355,10 @@ if __name__=='__main__':
     # with open(f"{HOME_DIR}/rna_test.txt") as f:
     #     rna_test=[line.strip() for line in f.readlines()]
 
-    # fusion(HOME_DIR,dna_train,'dna_train',ligand='dna')
-    # fusion(HOME_DIR,dna_test,'dna_test',ligand='dna')
-    # fusion(HOME_DIR,rna_train,'rna_train',ligand='rna')
-    # fusion(HOME_DIR,rna_test,'rna_test',ligand='rna')
+    # combine(HOME_DIR,dna_train,'dna_train',ligand='dna')
+    # combine(HOME_DIR,dna_test,'dna_test',ligand='dna')
+    # combine(HOME_DIR,rna_train,'rna_train',ligand='rna')
+    # combine(HOME_DIR,rna_test,'rna_test',ligand='rna')
 
-    HOME_DIR="../demo/5f7q_E"
-    fusion(HOME_DIR,['5f7q_E'],'5f7q_E',ligand='dna',label=False)
+    HOME_DIR="../demo/6cf2_F"
+    combine(HOME_DIR,['6cf2_F'],'6cf2_F',label=False)
