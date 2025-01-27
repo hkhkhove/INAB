@@ -43,4 +43,6 @@ cd scripts
 python combine_feats.py
 ```
 **3. Predict using pretrained model**
-`python predict.py --model_path <path of pretrained model> --input_features <path of combined features>`
+```
+python predict.py --model_path <path of pretrained model> --input_features <path of combined features>
+```
