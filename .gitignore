@@ -1,3 +1,6 @@
-dataset/INAB
+dataset/*
 lib/*
 pretrained_models/*
+!lib/.gitkeep
+!pretrained_models/.gitkeep
+!dataset/.gitkeep
