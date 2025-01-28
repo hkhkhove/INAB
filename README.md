@@ -37,7 +37,7 @@ Downlaod here [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMT
 cd scripts
 python extract_feats.py
 ```
-**2. Compine features**
+**2. Combine features**
 ```
 cd scripts
 python combine_feats.py
