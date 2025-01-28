@@ -42,7 +42,7 @@ python extract_feats.py
 cd scripts
 python combine_feats.py
 ```
-**3. Predict using pretrained model**
+**3. Predict using the pretrained model**
 ```
 python predict.py --model_path <path of pretrained model> --input_features <path of combined features>
 ```
