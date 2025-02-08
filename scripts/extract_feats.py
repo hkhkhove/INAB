@@ -1,12 +1,15 @@
-# Standard library imports
 import json
 import multiprocessing as mp
 import os
 import subprocess
 import time
 import warnings
+import traceback
 import numpy as np
+
 import torch
+torch.multiprocessing.set_sharing_strategy('file_system')
+
 from tqdm import tqdm
 from Bio.PDB.PDBParser import PDBParser
 import esm
@@ -117,7 +120,8 @@ def run_esm2(prot_list):
             with torch.no_grad():
                 results = model(batch_tokens, repr_layers=[33], return_contacts=True)
         except Exception as e:
-            print(e)
+            print(f"{prot} error: {e}")
+            traceback.print_exc()
             continue
         token_representations = results["representations"][33]
         prot_rep=token_representations[:,1:-1,:]
@@ -218,7 +222,8 @@ def run_saprot(prot_list):
             outputs = outputs.detach().cpu().numpy()[1:-1,:]
             np.save(f'{HOME_DIR}/features/{prot}.saprot.npy', outputs)
         except Exception as e:
-            print(e)
+            print(f"{prot} error: {e}")
+            traceback.print_exc()
             continue
 
 class GearNetProteinDataset(data.ProteinDataset):
@@ -305,6 +310,7 @@ def run_gearnet(prot_list):
             np.save(f"{HOME_DIR}/features/{prot_name}.gearnet.npy",rep)
         except Exception as e:
             print(f"{prot_name} error: {e}")
+            traceback.print_exc()
             continue
 
 if __name__ == "__main__":
