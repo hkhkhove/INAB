@@ -29,7 +29,7 @@ numpy==1.24.4
 
 ## Dataset and pretrained models
 
-Downlaod here [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMTm308UcSMp-UsKhIjPhhyH?usp=sharing).
+Download here [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMTm308UcSMp-UsKhIjPhhyH?usp=sharing).
 
 ## Usage
 **1. Extract features**
