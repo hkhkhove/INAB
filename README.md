@@ -1,4 +1,5 @@
 # INAB: Identify Nucleic Acid Binding Domain via Cross-modal Protein Language Models and Multiscale Computation
+
 ![Pipeline](./images/pipeline.png)
 ## Dependencies
 > Python Version: 3.10.16
@@ -29,8 +30,7 @@ numpy==1.24.4
 
 ## Dataset and pretrained models
 
-Download here [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMTm308UcSMp-UsKhIjPhhyH?usp=sharing).
-
+Download here [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMTm308UcSMp-UsKhIjPhhyH?usp=sharing). After downloading, unzip the dataset to the ```dataset``` directory and put the model weights in the ```pretrained_models``` directory.
 ## Usage
 **1. Extract features**
 ```
@@ -44,5 +44,5 @@ python combine_feats.py
 ```
 **3. Predict using the pretrained model**
 ```
-python predict.py --model_path <path of pretrained model> --input_features <path of combined features>
+python predict.py --model_path <path_of_pretrained_model> --input_features <path_of_combined_features>
 ```

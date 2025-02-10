@@ -133,10 +133,7 @@ def train(model,device,criterion,optimizer,data,result_name):
         labels=torch.from_numpy(labels).to(device).float()
 
         if args.mode=="classification":
-            if args.dataset=='ours':
-                labels = torch.where(labels > 0.5, torch.tensor(1.0, dtype=torch.float).to(device), torch.tensor(0.0, dtype=torch.float).to(device))
-            elif args.dataset=='GraphBind':
-                labels=torch.tensor([float(e) for e in GB_prot_label[prot_name]]).to(device)
+            labels = torch.where(labels > 0.5, torch.tensor(1.0, dtype=torch.float).to(device), torch.tensor(0.0, dtype=torch.float).to(device))
 
         outputs = model(node_feats,coords,edges,edge_attr)
         loss = criterion(outputs, labels.unsqueeze(0).unsqueeze(2))
@@ -190,10 +187,7 @@ def evaluate(model,device,data,result_name):
             labels=torch.from_numpy(labels).to(device).float()
 
             if args.mode=="classification":
-                if args.dataset=='ours':
-                    labels = torch.where(labels > 0.5, torch.tensor(1.0, dtype=torch.float).to(device), torch.tensor(0.0, dtype=torch.float).to(device))
-                elif args.dataset=='GraphBind':
-                    labels=torch.tensor([float(e) for e in GB_prot_label[prot_name]]).to(device)
+                labels = torch.where(labels > 0.5, torch.tensor(1.0, dtype=torch.float).to(device), torch.tensor(0.0, dtype=torch.float).to(device))
 
             outputs = model(node_feats,coords,edges,edge_attr)
 
@@ -209,7 +203,6 @@ def evaluate(model,device,data,result_name):
 
 def main(args,tr_data,val_data=None,te_data=None):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
-
 
     if not os.path.exists(f'./dataset/{args.dataset}'):
         raise FileNotFoundError(f'Dataset {args.dataset} not exists.')
@@ -260,19 +253,20 @@ def main(args,tr_data,val_data=None,te_data=None):
                     print(f"Best val results: {best_val_results}")
                     return best_val_results,epoch-patience 
             else:
-
                 train_results=train(model,device,criterion,optimizer,tr_data,'train')
                 test_results=evaluate(model,device,te_data,'test')
                 results=train_results | test_results
+
+                print(results)
 
             #scheduler.step()
             
 if __name__ == "__main__":
 
     args=tyro.cli(Args)
-    with open(f'','rb') as f:
+    with open(f'dataset/INAB/dna_train.pkl','rb') as f:
         tr_data=pickle.load(f)
-    with open(f'','rb') as f:
+    with open(f'dataset/INAB/dna_test.pkl','rb') as f:
         te_data=pickle.load(f)
     
     if args.cross_validate:

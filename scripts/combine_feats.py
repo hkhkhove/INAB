@@ -337,11 +337,13 @@ def combine(HOME_DIR,prot_list,name,ligand='dna',label=True):
             if label:
                 labels.append(label)
 
-    with open(f"{HOME_DIR}/{name}_features.pkl",'wb') as f:
-        pickle.dump(features,f)
     if label:
-        with open(f"{HOME_DIR}/{name}_labels.pkl",'wb') as f:
-            pickle.dump(labels,f)
+        data=list(zip(features,labels))
+        with open(f"{HOME_DIR}/{name}.pkl",'wb') as f:
+            pickle.dump(data,f)
+    else:
+        with open(f"{HOME_DIR}/{name}_features.pkl",'wb') as f:
+            pickle.dump(features,f)
 
 if __name__=='__main__':
     # HOME_DIR='../dataset/INAB'
