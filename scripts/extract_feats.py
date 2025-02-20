@@ -2,14 +2,11 @@ import json
 import multiprocessing as mp
 import os
 import subprocess
-import time
+import argparse
 import warnings
 import traceback
 import numpy as np
-
 import torch
-torch.multiprocessing.set_sharing_strategy('file_system')
-
 from tqdm import tqdm
 from Bio.PDB.PDBParser import PDBParser
 import esm
@@ -22,15 +19,6 @@ from torchdrug.layers import geometry
 warnings.filterwarnings("ignore")
 
 torch.set_grad_enabled(False)
-
-def timeit(func):
-    def wrapper(*args, **kwargs):
-        start_time = time.time()
-        result = func(*args, **kwargs)
-        end_time = time.time()
-        print(f"Function {func.__name__} took {(end_time - start_time):.0f} seconds to execute: {result}")
-        return result
-    return wrapper
 
 def get_seq(prot):
     AA_dic = {'GLY':'G','ALA':'A','VAL':'V','LEU':'L','ILE':'I','PHE':'F','TRP':'W','TYR':'Y','ASP':'D','ASN':'N',
@@ -49,8 +37,7 @@ def get_seq(prot):
     with open(save_path,'w') as f:
         f.write(f'>{prot}\n{seq}\n')
         
-@timeit
-def runBLAST(prot):
+def run_BLAST(prot):
     outfmt_type = 5
     num_iter = 3
     evalue_threshold = 0.001
@@ -71,8 +58,7 @@ def runBLAST(prot):
                 '-num_threads','8']                       
         subprocess.run(cmd)
 
-@timeit
-def runHHblits(prot):
+def run_HHblits(prot):
     fasta_file=f"{HOME_DIR}/features/{prot}.fasta"
     hhm_file = f"{HOME_DIR}/features/{prot}.hhm"#ohhm
 
@@ -227,7 +213,7 @@ def run_saprot(prot_list):
             continue
 
 class GearNetProteinDataset(data.ProteinDataset):
-        def __init__(self, pdb_files,transform=None, lazy=False,num_processes=16):
+        def __init__(self, pdb_files,transform=None, lazy=False):
             super().__init__()
             self.transform = transform
             self.lazy=lazy
@@ -235,42 +221,30 @@ class GearNetProteinDataset(data.ProteinDataset):
             self.data = []
             self.pdb_files = []
             self.sequences = []
-            self.load_pdbs(pdb_files,num_processes)
+            self.load_pdbs(pdb_files)
 
-        def load_pdbs(self, pdb_files,num_processes):
-
-            with mp.Pool(num_processes) as pool:
-                results=pool.imap_unordered(self.build_protein, pdb_files)
-                pbar=tqdm(total=len(pdb_files),desc="GearNet Loading PDB files")
-                for result in results:
-                    pbar.update()
-                    if result:
-                        protein,pdb_file=result
-                        self.data.append(protein)
-                        self.pdb_files.append(pdb_file)
-                        self.sequences.append(protein.to_sequence() if protein else None)
-
-        @staticmethod
-        def build_protein(pdb_file):
-            mol = Chem.MolFromPDBFile(pdb_file,sanitize=False) 
-            if not mol:
-                print(f"Can't construct molecule from pdb file `{pdb_file}`. Ignore this sample.")
-                return None
-            # try:
-            #     rdmolops.SanitizeMol(mol) 
-            # except Exception as e:
-            #     logger.debug("Can't sanitize molecule from pdb file `%s`. Ignore this sample. Exception: %s" % (pdb_file, e))
-            #     #continue
-            protein = data.Protein.from_molecule(mol,atom_feature=None, bond_feature=None)
-            if not protein:
-                print(f"Can't construct protein from pdb file `{pdb_file}`. Ignore this sample.")
-                return None
-
-            if hasattr(protein, "residue_feature"):
-                with protein.residue():
-                    protein.residue_feature = protein.residue_feature.to_dense()
+        def load_pdbs(self, pdb_files):
             
-            return protein,pdb_file
+            for pdb_file in pdb_files:
+                mol = Chem.MolFromPDBFile(pdb_file,sanitize=False) 
+                if not mol:
+                    print(f"Can't construct molecule from pdb file `{pdb_file}`. Ignore this sample.")
+                    return None
+                # try:
+                #     rdmolops.SanitizeMol(mol) 
+                # except Exception as e:
+                #     logger.debug("Can't sanitize molecule from pdb file `%s`. Ignore this sample. Exception: %s" % (pdb_file, e))
+                #     #continue
+                protein = data.Protein.from_molecule(mol,atom_feature=None, bond_feature=None)
+                if not protein:
+                    print(f"Can't construct protein from pdb file `{pdb_file}`. Ignore this sample.")
+                    continue
+                if hasattr(protein, "residue_feature"):
+                    with protein.residue():
+                        protein.residue_feature = protein.residue_feature.to_dense()       
+                self.data.append(protein)
+                self.pdb_files.append(pdb_file)
+                self.sequences.append(protein.to_sequence() if protein else None)
 
 def run_gearnet(prot_list):
 
@@ -293,7 +267,7 @@ def run_gearnet(prot_list):
     transform = transforms.Compose([protein_view_transform])
 
     pdb_files=[f"{HOME_DIR}/features/{prot}.pdb" for prot in prot_list]
-    dataset=GearNetProteinDataset(pdb_files,transform=transform, lazy=False,num_processes=32)
+    dataset=GearNetProteinDataset(pdb_files,transform=transform, lazy=False)
 
     filenames = dataset.pdb_files
     dataset = tqdm(dataset, f"GearNet")
@@ -313,7 +287,19 @@ def run_gearnet(prot_list):
             traceback.print_exc()
             continue
 
+def parallel(num_processes, prot_list, func):
+    with mp.Pool(num_processes) as pool:
+        results = pool.imap_unordered(func, prot_list)
+        pbar=tqdm(total=len(prot_list),desc=func.__name__)
+        for _ in results:
+            pbar.update()
+
 if __name__ == "__main__":
+
+    argparser=argparse.ArgumentParser()
+    argparser.add_argument('--dir',type=str ,default="../dataset/INAB")
+    args=argparser.parse_args()
+
     BLAST = '../lib/psiblast'
     BLAST_DB = ''
     HHBLITS = '../lib/hhblits'
@@ -321,7 +307,7 @@ if __name__ == "__main__":
     FOLDSEEK = '../lib/foldseek'
     DSSP="../lib/dssp"
 
-    HOME_DIR='../demo/6cf2_F'
+    HOME_DIR=args.dir
 
     if not os.path.exists(HOME_DIR):
         print("Please download the dataset and extract it to the dataset directory")
@@ -333,8 +319,8 @@ if __name__ == "__main__":
 
     prot='6cf2_F'
     get_seq(prot)
-    # runBLAST(prot)
-    # runHHblits(prot)
+    # parallel(8,prot_list,run_BLAST(prot))
+    # parallel(8,prot_list,run_HHblits(prot))
     run_dssp(prot)
     run_esm2([prot])
     run_saprot([prot])
