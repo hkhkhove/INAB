@@ -268,6 +268,10 @@ if __name__ == "__main__":
         tr_data=pickle.load(f)
     with open(f'dataset/INAB/dna_test.pkl','rb') as f:
         te_data=pickle.load(f)
+
+    random.seed(76)
+    random.shuffle(tr_data)
+    random.shuffle(te_data)
     
     if args.cross_validate:
         results=[]

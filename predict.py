@@ -1,8 +1,5 @@
 from model.INAB import INAB
-from model.egnn_clean import EGNN
-from sklearn.metrics import mean_squared_error,mean_absolute_error,r2_score,roc_auc_score,matthews_corrcoef,average_precision_score,explained_variance_score
-from dataclasses import dataclass,field
-import numpy as np
+from dataclasses import dataclass
 import torch
 import pickle
 from tqdm import tqdm
@@ -23,32 +20,9 @@ class Args:
     feats:str="all"
     order:str="ME"
 
-def measure(outputs,labels,name):
-    if args.mode=="regression":
-        mse=mean_squared_error(labels,outputs)
-        mae=mean_absolute_error(labels,outputs)
-        # ev_score=explained_variance_score(labels,outputs)
-        r2=r2_score(labels,outputs)
-        return {
-            f"{name}_mse":mse,
-            f"{name}_mae":mae,
-            f"{name}_r2":r2
-        }
-    elif args.mode=="classification":
-        auroc=roc_auc_score(labels,outputs)
-        outputs_binary=np.where(outputs < 0.5, 0, 1)
-        mcc=matthews_corrcoef(labels,outputs_binary)
-        auprc=average_precision_score(labels, outputs)
-        return {
-            f"{name}_auroc":auroc,
-            f"{name}_auprc":auprc,
-            f"{name}_mcc":mcc
-        }
-    else:
-        raise ValueError("Invalid mode. Expected 'regression' or 'classification'.")
-
 def evaluate(model,device,input_data):
-    for features in input_data:
+    results={}
+    for features in tqdm(input_data,desc="Predicting"):
         prot_name,node_feats,coords,edges,edge_attr=features
 
         coords=torch.from_numpy(coords).to(device).float()
@@ -58,9 +32,9 @@ def evaluate(model,device,input_data):
 
 
         outputs = model(node_feats,coords,edges,edge_attr)
+        results[prot_name]=outputs.cpu().numpy()
 
-
-    return outputs
+    return results
     
 if "__main__"==__name__:
     args=tyro.cli(Args)
