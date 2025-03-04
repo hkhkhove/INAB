@@ -6,9 +6,19 @@ from tqdm import tqdm
 import multiprocessing as mp
 import warnings
 import pickle
-
+import tyro
+from dataclasses import dataclass
 
 warnings.filterwarnings("ignore")
+
+@dataclass
+class Args:
+    dir:str="./demo/6cf2_F"
+    prot_list:str="./demo/6cf2_F/demo.txt"
+    save_name:str="6cf2_F"
+    ligand:str="rna"
+    label:bool=False
+    """True if labels are available, False otherwise"""
 
 def get_pssm(pssm_path):
     with open(pssm_path,'r') as f:
@@ -285,82 +295,71 @@ def normalize_np_array(np_array, p=2, axis=0):
     normalized_array = np_array / norm
     return normalized_array
 
-def combine(HOME_DIR,prot_list,name,ligand='dna',label=True):
+def combine(HOME_DIR,prot_list,save_name,ligand='dna',label=True):
     features=[]
     labels=[]
     
     for prot in prot_list:
         
-            hmm=get_hmm(f'{HOME_DIR}/features/{prot}.hhm')
-            pssm=get_pssm(f'{HOME_DIR}/features/{prot}.pssm')
+        hmm=get_hmm(f'{HOME_DIR}/features/{prot}.hhm')
+        pssm=get_pssm(f'{HOME_DIR}/features/{prot}.pssm')
 
-            norss=get_dssp(f'{HOME_DIR}/features/{prot}.dssp')
-            pdb_af,res_id_list=get_atom_feats(f'{HOME_DIR}/features/{prot}.pdb')
-            struct_feats=combine_struct_feats(norss,pdb_af,res_id_list)
+        norss=get_dssp(f'{HOME_DIR}/features/{prot}.dssp')
+        pdb_af,res_id_list=get_atom_feats(f'{HOME_DIR}/features/{prot}.pdb')
+        struct_feats=combine_struct_feats(norss,pdb_af,res_id_list)
 
-            esm2_rep=np.load(f'{HOME_DIR}/features/{prot}.esm2.npy')
-            gearnet_rep=np.load(f'{HOME_DIR}/features/{prot}.gearnet.npy')
-            saprot_rep=np.load(f'{HOME_DIR}/features/{prot}.saprot.npy')
+        esm2_rep=np.load(f'{HOME_DIR}/features/{prot}.esm2.npy')
+        gearnet_rep=np.load(f'{HOME_DIR}/features/{prot}.gearnet.npy')
+        saprot_rep=np.load(f'{HOME_DIR}/features/{prot}.saprot.npy')
 
-            esm2_rep=normalize_np_array(esm2_rep)
-            gearnet_rep=normalize_np_array(gearnet_rep)
-            saprot_rep=normalize_np_array(saprot_rep)
+        esm2_rep=normalize_np_array(esm2_rep)
+        gearnet_rep=normalize_np_array(gearnet_rep)
+        saprot_rep=normalize_np_array(saprot_rep)
 
-            edges, edge_attr,coords=get_edges(f'{HOME_DIR}/features/{prot}.pdb')
-            coords=np.array(coords)
-            edges=np.array(edges)
-            edge_attr=np.array(edge_attr)
+        edges, edge_attr,coords=get_edges(f'{HOME_DIR}/features/{prot}.pdb')
+        coords=np.array(coords)
+        edges=np.array(edges)
+        edge_attr=np.array(edge_attr)
 
-            if label:
-                with open(f'{HOME_DIR}/labels/{prot}.txt') as f:
-                    lines=f.readlines()
-                    dna_label=np.array([float(e.split()[0]) for e in lines])
-                    rna_label=np.array([float(e.split()[1]) for e in lines])
-                    if ligand=='dna':
-                        label=dna_label
-                    elif ligand=='rna':
-                        label=rna_label
-                    else:
-                        raise ValueError(f"ligand {ligand} not supported!")
+        if label:
+            with open(f'{HOME_DIR}/labels/{prot}.txt') as f:
+                lines=f.readlines()
+                dna_label=np.array([float(e.split()[0]) for e in lines])
+                rna_label=np.array([float(e.split()[1]) for e in lines])
+                if ligand=='dna':
+                    label=dna_label
+                elif ligand=='rna':
+                    label=rna_label
+                else:
+                    raise ValueError(f"ligand {ligand} not supported!")
 
-                if not hmm.shape[0]==pssm.shape[0]==struct_feats.shape[0]==esm2_rep.shape[0]==gearnet_rep.shape[0]==saprot_rep.shape[0]==len(coords)==len(label):
-                    print(f"hmm:{hmm.shape[0]},pssm:{pssm.shape[0]},struct_feats:{struct_feats.shape[0]},esm2_rep:{esm2_rep.shape[0]},gearnet_rep:{gearnet_rep.shape[0]},saprot_rep:{saprot_rep.shape[0]},coords:{len(coords)},label:{len(label)}")
-                    continue
-            
-            if not hmm.shape[0]==pssm.shape[0]==struct_feats.shape[0]==esm2_rep.shape[0]==gearnet_rep.shape[0]==saprot_rep.shape[0]==len(coords):
-                print(f"hmm:{hmm.shape[0]},pssm:{pssm.shape[0]},struct_feats:{struct_feats.shape[0]},esm2_rep:{esm2_rep.shape[0]},gearnet_rep:{gearnet_rep.shape[0]},saprot_rep:{saprot_rep.shape[0]},coords:{len(coords)}")
+            if not hmm.shape[0]==pssm.shape[0]==struct_feats.shape[0]==esm2_rep.shape[0]==gearnet_rep.shape[0]==saprot_rep.shape[0]==len(coords)==len(label):
+                print(f"hmm:{hmm.shape[0]},pssm:{pssm.shape[0]},struct_feats:{struct_feats.shape[0]},esm2_rep:{esm2_rep.shape[0]},gearnet_rep:{gearnet_rep.shape[0]},saprot_rep:{saprot_rep.shape[0]},coords:{len(coords)},label:{len(label)}")
                 continue
+        
+        if not hmm.shape[0]==pssm.shape[0]==struct_feats.shape[0]==esm2_rep.shape[0]==gearnet_rep.shape[0]==saprot_rep.shape[0]==len(coords):
+            print(f"hmm:{hmm.shape[0]},pssm:{pssm.shape[0]},struct_feats:{struct_feats.shape[0]},esm2_rep:{esm2_rep.shape[0]},gearnet_rep:{gearnet_rep.shape[0]},saprot_rep:{saprot_rep.shape[0]},coords:{len(coords)}")
+            continue
 
-            node_feats=np.concatenate([hmm,pssm,struct_feats,esm2_rep,gearnet_rep,saprot_rep],axis=1)
-            
-            features.append((prot,node_feats,coords,edges,edge_attr))
-            if label:
-                labels.append(label)
+        node_feats=np.concatenate([hmm,pssm,struct_feats,esm2_rep,gearnet_rep,saprot_rep],axis=1)
+        
+        features.append((prot,node_feats,coords,edges,edge_attr))
+        if label:
+            labels.append(label)
 
     if label:
         data=list(zip(features,labels))
-        with open(f"{HOME_DIR}/{name}.pkl",'wb') as f:
+        with open(f"{HOME_DIR}/{save_name}.pkl",'wb') as f:
             pickle.dump(data,f)
     else:
-        with open(f"{HOME_DIR}/{name}_features.pkl",'wb') as f:
+        with open(f"{HOME_DIR}/{save_name}_features.pkl",'wb') as f:
             pickle.dump(features,f)
 
 if __name__=='__main__':
-    # HOME_DIR='../dataset/INAB'
 
-    # with open(f"{HOME_DIR}/dna_train.txt") as f:
-    #     dna_train=[line.strip() for line in f.readlines()]
-    # with open(f"{HOME_DIR}/dna_test.txt") as f:
-    #     dna_test=[line.strip() for line in f.readlines()]
-    # with open(f"{HOME_DIR}/rna_train.txt") as f:
-    #     rna_train=[line.strip() for line in f.readlines()]
-    # with open(f"{HOME_DIR}/rna_test.txt") as f:
-    #     rna_test=[line.strip() for line in f.readlines()]
+    args=tyro.cli(Args)
 
-    # combine(HOME_DIR,dna_train,'dna_train',ligand='dna')
-    # combine(HOME_DIR,dna_test,'dna_test',ligand='dna')
-    # combine(HOME_DIR,rna_train,'rna_train',ligand='rna')
-    # combine(HOME_DIR,rna_test,'rna_test',ligand='rna')
+    with open(args.prot_list,"r") as f:
+        prot_list=f.read().splitlines()
 
-    HOME_DIR="../demo/6cf2_F"
-    combine(HOME_DIR,['6cf2_F'],'6cf2_F',label=False)
+    combine(args.dir, prot_list, args.save_name, ligand=args.ligand, label=args.label)

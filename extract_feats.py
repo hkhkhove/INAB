@@ -119,7 +119,8 @@ def run_esm2(prot_list):
             np.save(f'{HOME_DIR}/features/{prot}.esm2.npy', rep_numpy)
 
 def run_saprot(prot_list):
-    
+    assert os.path.exists(FOLDSEEK), f"Foldseek not found: {FOLDSEEK}"
+    assert os.path.exists("./pretrained_models/SaProt_650M_PDB"), f"SaProt model not found"
     # Get structural seqs from pdb file
     def get_struc_seq(foldseek,
                     path,
@@ -179,7 +180,7 @@ def run_saprot(prot_list):
         os.remove(tmp_save_path + ".dbtype")
         return seq_dict
 
-    model_path = "../pretrained_models/SaProt_650M_PDB"
+    model_path = "./pretrained_models/SaProt_650M_PDB"
     tokenizer = EsmTokenizer.from_pretrained(model_path)
     model = EsmForMaskedLM.from_pretrained(model_path)
     model.to(device)
@@ -247,11 +248,11 @@ class GearNetProteinDataset(data.ProteinDataset):
                 self.sequences.append(protein.to_sequence() if protein else None)
 
 def run_gearnet(prot_list):
-
+    assert os.path.exists("./pretrained_models/mc_gearnet_edge.pth"), f"GearNet model not found"
     model = models.GearNet(input_dim=21, hidden_dims=[512, 512, 512,512,512,512], 
                             num_relation=7, edge_input_dim=59, num_angle_bin=8,
                             batch_norm=True, concat_hidden=False, short_cut=True, readout="sum")
-    state_dict = torch.load("../pretrained_models/mc_gearnet_edge.pth", map_location=device)  
+    state_dict = torch.load("./pretrained_models/mc_gearnet_edge.pth", map_location=device)  
     model.load_state_dict(state_dict)
     model.eval()
     model.to(device)
@@ -297,15 +298,15 @@ def parallel(num_processes, prot_list, func):
 if __name__ == "__main__":
 
     argparser=argparse.ArgumentParser()
-    argparser.add_argument('--dir',type=str ,default="../dataset/INAB")
+    argparser.add_argument('--dir',type=str ,default="./demo/6cf2_F")
     args=argparser.parse_args()
 
-    BLAST = '../lib/psiblast'
+    BLAST = './lib/psiblast'
     BLAST_DB = ''
-    HHBLITS = '../lib/hhblits'
+    HHBLITS = './lib/hhblits'
     HH_DB = ''
-    FOLDSEEK = '../lib/foldseek'
-    DSSP="../lib/dssp"
+    FOLDSEEK = './lib/foldseek'
+    DSSP = "./lib/dssp"
 
     HOME_DIR=args.dir
 
@@ -317,11 +318,15 @@ if __name__ == "__main__":
 
     device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-    prot='6cf2_F'
-    get_seq(prot)
-    # parallel(8,prot_list,run_BLAST(prot))
-    # parallel(8,prot_list,run_HHblits(prot))
-    run_dssp(prot)
-    run_esm2([prot])
-    run_saprot([prot])
-    run_gearnet([prot])
+    prot_list=[e.split('.')[0] for e in os.listdir(f'{HOME_DIR}/features') if e.endswith('.pdb')]
+
+    for prot in tqdm(prot_list,desc="DSSP"):
+        get_seq(prot)
+        run_dssp(prot)
+
+    run_esm2(prot_list)
+    run_saprot(prot_list)
+    run_gearnet(prot_list)
+
+    # parallel(8,prot_list,run_BLAST(prot_list))
+    # parallel(8,prot_list,run_HHblits(prot_list))
