@@ -4,7 +4,7 @@
 ## Dependencies
 > Python Version: 3.10.16
 ```
-troch==2.5.1
+torch==2.5.1
 biopython==1.84
 mamba-ssm==2.2.4
 pandas==1.5.3
