@@ -1,3 +1,7 @@
+"""
+Satorras V G, Hoogeboom E, Welling M. E (n) equivariant graph neural networks[C]//International conference on machine learning. PMLR, 2021: 9323-9332.
+"""
+
 from torch import nn
 import torch
 
@@ -104,7 +108,7 @@ class E_GCL(nn.Module):
 
 
 class EGNN(nn.Module):
-    def __init__(self, in_node_nf, hidden_nf, out_node_nf, in_edge_nf=0, device='cpu', act_fn=nn.SiLU(), n_layers=4, residual=True, attention=False, normalize=False, tanh=False):
+    def __init__(self, in_node_nf, hidden_nf, out_node_nf, in_edge_nf=0, act_fn=nn.SiLU(), n_layers=4, residual=True, attention=False, normalize=False, tanh=False):
         '''
 
         :param in_node_nf: Number of features for 'h' at the input
@@ -128,7 +132,6 @@ class EGNN(nn.Module):
 
         super(EGNN, self).__init__()
         self.hidden_nf = hidden_nf
-        self.device = device
         self.n_layers = n_layers
         self.embedding_in = nn.Linear(in_node_nf, self.hidden_nf)
         self.embedding_out = nn.Linear(self.hidden_nf, out_node_nf)
@@ -136,7 +139,6 @@ class EGNN(nn.Module):
             self.add_module("gcl_%d" % i, E_GCL(self.hidden_nf, self.hidden_nf, self.hidden_nf, edges_in_d=in_edge_nf,
                                                 act_fn=act_fn, residual=residual, attention=attention,
                                                 normalize=normalize, tanh=tanh))
-        self.to(self.device)
 
     def forward(self, h, x, edges, edge_attr):
         if self.n_layers==0:

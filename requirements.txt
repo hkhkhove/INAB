@@ -1,0 +1,11 @@
+biopython==1.84
+mamba-ssm==2.2.4
+pandas==2.2.3
+scikit-learn==1.6.0
+tqdm==4.67.1
+transformers==4.28.1
+tyro==0.9.6
+fair-esm==2.0.0
+torchdrug==0.2.1
+causal-conv1d==1.5.0.post8
+numpy==1.24.4

@@ -21,48 +21,50 @@ feats_dim={
     "no_esm2":1029,
     "no_gearnet":1797,
     "no_saprot":1863,
-    "no_plm":71
+    "no_plm":71,
+    "no_gearnet_saprot":1351,
+    "no_esm2_saprot":583,
+    "no_esm2_gearnet":517,
 }
 
 class INAB(nn.Module):
-    def __init__(self,args):
+    def __init__(self,config):
         super(INAB, self).__init__()
-        self.args=args        
-
-        self.emmbedding=nn.Linear(feats_dim[args.feats],args.d_model)
+        self.config=config        
+        self.emmbedding=nn.Linear(feats_dim[config['feats']],config['d_model'])
  
-        if args.seq_model=="mamba":
+        if config['seq_model']=="mamba":
             mamba_modules=[
                     Mamba2(
                     # This module uses roughly 3 * expand * d_model^2 parameters
-                    d_model=args.d_model, # Model dimension d_model
+                    d_model=config['d_model'], # Model dimension d_model
                     d_state=64,  # SSM state expansion factor, typically 64 or 128
                     d_conv=4,    # Local convolution width
                     expand=2,    # Block expansion factor
                     headdim=64   #ensure (d_model*expand)%headdim==0 and ((d_model*expand)/headdim)%8==0, default 64
-                ) for _ in range(args.num_seq_model_layers)
+                ) for _ in range(config['num_seq_model_layers'])
             ]
             self.seq_model=nn.Sequential(*mamba_modules)
-        elif args.seq_model=="transformer":
-            encoder_layer = nn.TransformerEncoderLayer(d_model=args.d_model, nhead=1,dropout=0.1,batch_first=True)
-            self.seq_model=nn.TransformerEncoder(encoder_layer, num_layers=args.num_seq_model_layers)
+        elif config['seq_model']=="transformer":
+            encoder_layer = nn.TransformerEncoderLayer(d_model=config['d_model'], nhead=1,dropout=0.1,batch_first=True)
+            self.seq_model=nn.TransformerEncoder(encoder_layer, num_layers=config['num_seq_model_layers'])
         else:
             raise ValueError("seq_model should be either mamba or transformer")      
 
-        self.egnn=EGNN(in_node_nf=args.d_model, hidden_nf=args.d_model, out_node_nf=args.d_model, in_edge_nf=1, n_layers=args.num_egnn_layers,attention=True)
+        self.struc_model=EGNN(in_node_nf=config['d_model'], hidden_nf=config['d_model'], out_node_nf=config['d_model'], in_edge_nf=1, n_layers=config['num_egnn_layers'],attention=True)
 
-        if args.mode=="regression":
+        if config['mode']=="regression":
             self.mlp=nn.Sequential(
-                nn.Linear(args.d_model,256),
+                nn.Linear(config['d_model'],256),
                 nn.ReLU(),
                 nn.Linear(256,128),
                 nn.ReLU(),
                 nn.Linear(128,1),
                 nn.Sigmoid()
             )
-        elif args.mode=="classification":
+        elif config['mode']=="classification":
             self.mlp=nn.Sequential(
-                nn.Linear(args.d_model,256),
+                nn.Linear(config['d_model'],256),
                 nn.ReLU(),
                 nn.Linear(256,128),
                 nn.ReLU(),
@@ -70,24 +72,27 @@ class INAB(nn.Module):
             )
 
     def forward(self,node_feats,coords,edges,edge_attr):
-        if self.args.order=="ME":
-            h=self.emmbedding(node_feats).unsqueeze(dim=0) #(batch,seq_len,feat_dim)
+        if self.config['order']=="ME":
+            h=self.emmbedding(node_feats).unsqueeze(dim=0) #(batch,seq_len,feat_dim), batch=1
             
             h1=self.seq_model(h).squeeze(dim=0) #(seq_len,feat_dim)
             
-            h2,x=self.egnn(h1,coords,edges,edge_attr)
+            h2,x=self.struc_model(h1,coords,edges,edge_attr)
             
             y=self.mlp(h2)
 
-        elif self.args.order=="EM":
+        elif self.config['order']=="EM":
             h=self.emmbedding(node_feats)
 
-            h1,x=self.egnn(h,coords,edges,edge_attr)
+            h1,x=self.struc_model(h,coords,edges,edge_attr)
             h1=h1.unsqueeze(dim=0)
                         
             h2=self.seq_model(h1)
 
             y=self.mlp(h2)
+        
+        else:
+            raise ValueError("order should be either ME or EM")
 
         return y
     

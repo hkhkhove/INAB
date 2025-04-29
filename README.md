@@ -1,46 +1,70 @@
-# INAB: Identify Nucleic Acid Binding Domain via Cross-modal Protein Language Models and Multiscale Computation
+# INAB: Identify Nucleic Acid Binding Domains via Cross-modal Protein Language Models and Multiscale Computation
 
 ![Pipeline](./images/pipeline.png)
+
 ## Dependencies
-> Python Version: 3.10.16
-```
-troch==2.5.1
-biopython==1.84
-mamba-ssm==2.2.4
-pandas==1.5.3
-scikit-learn==1.6.0
-tqdm==4.67.1
-transformers==4.28.1
-tyro==0.9.6
-torchdrug==0.2.1
-fair-esm==2.0.0
-causal-conv1d==1.5.0.post8
-numpy==1.24.4
+
+- **Python Version:** 3.10.16  
+- **System:** Ubuntu 22.04.4
+
+```bash
+pip install torch==2.4.1
+pip install -r requirements.txt
 ```
 
 ## Third-party Tools
 
-[PSI-BLAST](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
-[HH-suite](https://github.com/soedinglab/hh-suite)
-[DSSP](https://swift.cmbi.umcn.nl/gv/dssp/DSSP_5.html)
-[ESM-2](https://github.com/facebookresearch/esmn)
-[GearNet](https://github.com/DeepGraphLearning/GearNet)
-[SaProt](https://github.com/westlake-repl/SaProt)
-[Foldseek](https://github.com/steineggerlab/foldseek)
+- [PSI-BLAST](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+- [HH-suite](https://github.com/soedinglab/hh-suite)
+- [DSSP](https://swift.cmbi.umcn.nl/gv/dssp/DSSP_5.html)
+- [ESM-2](https://github.com/facebookresearch/esmn)
+- [GearNet](https://github.com/DeepGraphLearning/GearNet)
+- [SaProt](https://github.com/westlake-repl/SaProt)
+- [Foldseek](https://github.com/steineggerlab/foldseek)
 
-## Dataset and pretrained models
+## Dataset and Pretrained Models
 
-- Download here [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMTm308UcSMp-UsKhIjPhhyH?usp=sharing). After downloading, unzip the dataset to the ```dataset``` directory and put the model weights in the ```pretrained_models``` directory. 
-- The dataset comprises features and hierarchical labels. The provided features exclusively include PDB files and PSSM/HHM profiles, while additional features must be extracted using the ```extract_feat.py``` script. 
-- Pretrained models with the suffix "GraphBind" denote those trained on the GraphBind training set, whereas all other models were trained using the INAB training set.
+- Download the dataset and pretrained models from [Google Drive](https://drive.google.com/drive/folders/1KLv127DwIMTm308UcSMp-UsKhIjPhhyH?usp=sharing).
+- After downloading, extract the dataset to the `dataset` directory and place the model weights in the `model_parameters` directory.
+- The dataset contains features and hierarchical labels. Provided features include only PDB files and PSSM/HHM profiles; additional features will be automatically extracted when running `predict.py`.
+- Pretrained models with the suffix "GraphBind" were trained on the GraphBind training set; all other models were trained on the INAB training set.
 
-## Demo
-**1. Extract and combine features**
+## Usage
+
+### 1. Prediction with Pretrained Models
+
+You can choose either the DNA or RNA model by specifying the `--model_path` argument.
+
+```bash
+python predict.py --model_path ./model_parameters/INAB_DNA.pth --pdb_path ./demo/features/5f7q_E.pdb
 ```
-python extract_feats.py --dir demo/6cf2_F
-python combine_feats.py --dir demo/6cf2_F --prot_list demo/6cf2_F/demo.txt --save_name 6cf2_F
+
+Prediction results will be saved in the same directory as the input PDB file, with the filename formatted as <pdb_id>_output.txt (e.g., 5f7q_output.txt).
+
+---
+
+### 2. Training
+
+#### Step 1: Prepare Features for Training
+
+```bash
+python -m feature.extract --pdb_dir ./dataset/INAB/features
 ```
-**2. Predict using the pretrained model**
+
+To specify a GPU device, use:
+
+```bash
+CUDA_VISIBLE_DEVICES=INDEX python -m feature.extract --pdb_dir ./dataset/INAB/features
 ```
-python predict.py --model_path pretrained_models/INAB_RNA_model.pth --input demo/6cf2_F/6cf2_F_features.pkl
+
+#### Step 2: Run Training
+
+```bash
+python train.py --dataset INAB --task dna
+```
+
+Or for RNA task:
+
+```bash
+python train.py --dataset INAB --task rna
 ```
