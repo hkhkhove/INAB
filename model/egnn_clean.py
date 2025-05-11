@@ -12,7 +12,19 @@ class E_GCL(nn.Module):
     re
     """
 
-    def __init__(self, input_nf, output_nf, hidden_nf, edges_in_d=0, act_fn=nn.SiLU(), residual=True, attention=False, normalize=False, coords_agg='mean', tanh=False):
+    def __init__(
+        self,
+        input_nf,
+        output_nf,
+        hidden_nf,
+        edges_in_d=0,
+        act_fn=nn.SiLU(),
+        residual=True,
+        attention=False,
+        normalize=False,
+        coords_agg="mean",
+        tanh=False,
+    ):
         super(E_GCL, self).__init__()
         input_edge = input_nf * 2
         self.residual = residual
@@ -27,12 +39,14 @@ class E_GCL(nn.Module):
             nn.Linear(input_edge + edge_coords_nf + edges_in_d, hidden_nf),
             act_fn,
             nn.Linear(hidden_nf, hidden_nf),
-            act_fn)
+            act_fn,
+        )
 
         self.node_mlp = nn.Sequential(
             nn.Linear(hidden_nf + input_nf, hidden_nf),
             act_fn,
-            nn.Linear(hidden_nf, output_nf))
+            nn.Linear(hidden_nf, output_nf),
+        )
 
         layer = nn.Linear(hidden_nf, 1, bias=False)
         torch.nn.init.xavier_uniform_(layer.weight, gain=0.001)
@@ -46,9 +60,7 @@ class E_GCL(nn.Module):
         self.coord_mlp = nn.Sequential(*coord_mlp)
 
         if self.attention:
-            self.att_mlp = nn.Sequential(
-                nn.Linear(hidden_nf, 1),
-                nn.Sigmoid())
+            self.att_mlp = nn.Sequential(nn.Linear(hidden_nf, 1), nn.Sigmoid())
 
     def edge_model(self, source, target, radial, edge_attr):
         if edge_attr is None:  # Unused.
@@ -76,12 +88,12 @@ class E_GCL(nn.Module):
     def coord_model(self, coord, edge_index, coord_diff, edge_feat):
         row, col = edge_index
         trans = coord_diff * self.coord_mlp(edge_feat)
-        if self.coords_agg == 'sum':
+        if self.coords_agg == "sum":
             agg = unsorted_segment_sum(trans, row, num_segments=coord.size(0))
-        elif self.coords_agg == 'mean':
+        elif self.coords_agg == "mean":
             agg = unsorted_segment_mean(trans, row, num_segments=coord.size(0))
         else:
-            raise Exception('Wrong coords_agg parameter' % self.coords_agg)
+            raise Exception("Wrong coords_agg parameter" % self.coords_agg)
         coord = coord + agg
         return coord
 
@@ -108,8 +120,20 @@ class E_GCL(nn.Module):
 
 
 class EGNN(nn.Module):
-    def __init__(self, in_node_nf, hidden_nf, out_node_nf, in_edge_nf=0, act_fn=nn.SiLU(), n_layers=4, residual=True, attention=False, normalize=False, tanh=False):
-        '''
+    def __init__(
+        self,
+        in_node_nf,
+        hidden_nf,
+        out_node_nf,
+        in_edge_nf=0,
+        act_fn=nn.SiLU(),
+        n_layers=4,
+        residual=True,
+        attention=False,
+        normalize=False,
+        tanh=False,
+    ):
+        """
 
         :param in_node_nf: Number of features for 'h' at the input
         :param hidden_nf: Number of hidden features
@@ -128,7 +152,7 @@ class EGNN(nn.Module):
         :param tanh: Sets a tanh activation function at the output of phi_x(m_ij). I.e. it bounds the output of
                         phi_x(m_ij) which definitely improves in stability but it may decrease in accuracy.
                         We didn't use it in our paper.
-        '''
+        """
 
         super(EGNN, self).__init__()
         self.hidden_nf = hidden_nf
@@ -136,14 +160,25 @@ class EGNN(nn.Module):
         self.embedding_in = nn.Linear(in_node_nf, self.hidden_nf)
         self.embedding_out = nn.Linear(self.hidden_nf, out_node_nf)
         for i in range(0, n_layers):
-            self.add_module("gcl_%d" % i, E_GCL(self.hidden_nf, self.hidden_nf, self.hidden_nf, edges_in_d=in_edge_nf,
-                                                act_fn=act_fn, residual=residual, attention=attention,
-                                                normalize=normalize, tanh=tanh))
+            self.add_module(
+                "gcl_%d" % i,
+                E_GCL(
+                    self.hidden_nf,
+                    self.hidden_nf,
+                    self.hidden_nf,
+                    edges_in_d=in_edge_nf,
+                    act_fn=act_fn,
+                    residual=residual,
+                    attention=attention,
+                    normalize=normalize,
+                    tanh=tanh,
+                ),
+            )
 
     def forward(self, h, x, edges, edge_attr):
-        if self.n_layers==0:
-            return h,x
-        
+        if self.n_layers == 0:
+            return h, x
+
         h = self.embedding_in(h)
         for i in range(0, self.n_layers):
             h, x, _ = self._modules["gcl_%d" % i](h, edges, x, edge_attr=edge_attr)
@@ -204,13 +239,13 @@ if __name__ == "__main__":
     x_dim = 3
 
     # Dummy variables h, x and fully connected edges
-    h = torch.rand(batch_size *  n_nodes, n_feat)
+    h = torch.rand(batch_size * n_nodes, n_feat)
     x = torch.rand(batch_size * n_nodes, x_dim)
     edges, edge_attr = get_edges_batch(n_nodes, batch_size)
     print(h.shape, x.shape, edges[0].shape, edge_attr.shape)
     # Initialize EGNN
     egnn = EGNN(in_node_nf=n_feat, hidden_nf=32, out_node_nf=1, in_edge_nf=1)
-    print(h,x,edges)
+    print(h, x, edges)
     # Run EGNN
     h, x = egnn(h, x, edges, edge_attr)
-    print(h,x)
+    print(h, x)
