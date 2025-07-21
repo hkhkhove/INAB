@@ -2,6 +2,7 @@ from torch import nn
 from model.egnn_clean import EGNN
 from mamba_ssm import Mamba2
 
+
 # feat_dim
 # hhm(30): 0-29
 # pssm(20): 30-49
@@ -34,6 +35,10 @@ class INAB(nn.Module):
         super(INAB, self).__init__()
         self.config = config
         self.emmbedding = nn.Linear(feats_dim[config["feats"]], config["d_model"])
+        self.cross_attention = nn.MultiheadAttention(embed_dim=config["d_model"], num_heads=1)
+        self.W_Q = nn.Linear(config["d_model"], config["d_model"])
+        self.W_K = nn.Linear(config["d_model"], config["d_model"])
+        self.W_V = nn.Linear(config["d_model"], config["d_model"])
 
         if config["seq_model"] == "mamba":
             mamba_modules = [
@@ -49,12 +54,8 @@ class INAB(nn.Module):
             ]
             self.seq_model = nn.Sequential(*mamba_modules)
         elif config["seq_model"] == "transformer":
-            encoder_layer = nn.TransformerEncoderLayer(
-                d_model=config["d_model"], nhead=1, dropout=0.1, batch_first=True
-            )
-            self.seq_model = nn.TransformerEncoder(
-                encoder_layer, num_layers=config["num_seq_model_layers"]
-            )
+            encoder_layer = nn.TransformerEncoderLayer(d_model=config["d_model"], nhead=1, dropout=0.1, batch_first=True)
+            self.seq_model = nn.TransformerEncoder(encoder_layer, num_layers=config["num_seq_model_layers"])
         else:
             raise ValueError("seq_model should be either mamba or transformer")
 
@@ -67,35 +68,31 @@ class INAB(nn.Module):
             attention=True,
         )
 
-        if config["mode"] == "regression":
-            self.mlp = nn.Sequential(
-                nn.Linear(config["d_model"], 256),
-                nn.ReLU(),
-                nn.Linear(256, 128),
-                nn.ReLU(),
-                nn.Linear(128, 1),
-                nn.Sigmoid(),
-            )
-        elif config["mode"] == "classification":
-            self.mlp = nn.Sequential(
-                nn.Linear(config["d_model"], 256),
-                nn.ReLU(),
-                nn.Linear(256, 128),
-                nn.ReLU(),
-                nn.Linear(128, 1),
-            )
+        self.mlp = nn.Sequential(
+            nn.Linear(config["d_model"], 256),
+            nn.Dropout(0.1),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.Dropout(0.1),
+            nn.ReLU(),
+            nn.Linear(128, 1),
+        )
 
     def forward(self, node_feats, coords, edges, edge_attr):
         if self.config["order"] == "seq_struc":
-            h = self.emmbedding(node_feats).unsqueeze(
-                dim=0
-            )  # (batch,seq_len,feat_dim), batch=1
+            h = self.emmbedding(node_feats).unsqueeze(dim=0)  # (batch,seq_len,feat_dim), batch=1
 
-            h1 = self.seq_model(h).squeeze(dim=0)  # (seq_len,feat_dim)
+            seq_h = self.seq_model(h)
 
-            h2, x = self.struc_model(h1, coords, edges, edge_attr)
+            struct_h, x = self.struc_model(h.squeeze(0), coords, edges, edge_attr)  # (batch,seq_len,feat_dim)
+            struct_h = struct_h.unsqueeze(dim=0)  # (batch,seq_len,feat_dim), batch=1
+            Q = self.W_Q(seq_h)
+            K = self.W_K(struct_h)
+            V = self.W_V(struct_h)
 
-            y = self.mlp(h2)
+            fused_h, _ = self.cross_attention(Q, K, V)
+
+            y = self.mlp(fused_h)
 
         elif self.config["order"] == "struc_seq":
             h = self.emmbedding(node_feats)

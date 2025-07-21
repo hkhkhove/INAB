@@ -9,6 +9,7 @@
 
 ```bash
 pip install torch==2.4.1
+pip install numpy==1.24.4
 pip install -r requirements.txt
 ```
 

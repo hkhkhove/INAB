@@ -4,6 +4,7 @@ import time
 from dataclasses import dataclass
 from typing import Optional
 
+from sympy import im
 import torch
 import tyro
 from tqdm import tqdm
@@ -42,7 +43,7 @@ def predict(model, device, input_data):
     edges = torch.from_numpy(edges).to(device).long()
     edge_attr = torch.from_numpy(edge_attr).to(device).float()
     node_feats = torch.from_numpy(node_feats).to(device).float()
-
+    node_feats = torch.cat((node_feats[:, 50:71], node_feats[:, 1863:]), dim=1)
     output = model(node_feats, coords, edges, edge_attr)
 
     output = output.squeeze().cpu().tolist()
@@ -52,7 +53,7 @@ def predict(model, device, input_data):
 
 if "__main__" == __name__:
     args = tyro.cli(Args)
-
+    print(os.getpid())
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
     config.path["log_file"] = os.path.join(
         config.path["base_dir"],
@@ -79,8 +80,11 @@ if "__main__" == __name__:
         pdbs = [args.pdb_path]
 
     # Mamba requires cuda
-    device = torch.device(f"cuda")
-
+    # device = torch.device(f"cuda:{args.gpu}" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cpu")
+    config.model["feats"] = "no_hhm_pssm_esm2_gearnet"
+    config.model["order"] = "seq_struc"
+    config.model["seq_model"] = "transformer"
     model = INAB(config.model)
     model.load_state_dict(torch.load(args.model_path, weights_only=True))
     model.eval()
@@ -88,15 +92,14 @@ if "__main__" == __name__:
 
     feats_start = time.time()
 
-    success_pdbs = extract_feats(pdbs, config.path)
-
+    # success_pdbs = extract_feats(pdbs, config.path)
+    success_pdbs = [args.pdb_path]
     feats_end = time.time()
 
     for pdb in tqdm(success_pdbs, desc="6.Predicting"):
         with open(pdb.replace(".pdb", "_input.pkl"), "rb") as f:
             input_data = pickle.load(f)
-
-        with torch.cuda.device(device):
+            # with torch.cuda.device(device):
             output = predict(model, device, input_data)
 
         with open(pdb.replace(".pdb", "_output.txt"), "w") as f:

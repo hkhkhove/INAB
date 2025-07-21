@@ -7,21 +7,13 @@ import random
 import warnings
 
 import numpy as np
-from sklearn.metrics import (
-    average_precision_score,
-    explained_variance_score,
-    matthews_corrcoef,
-    mean_absolute_error,
-    mean_squared_error,
-    r2_score,
-    roc_auc_score,
-)
+import torchmetrics
 import torch
 from torch import nn
-from torch.optim.adam import Adam
 import tyro
 
-from model.INAB import INAB
+# from model.INAB import INAB
+from model.INAB_cross_attention import INAB
 import config
 
 
@@ -30,28 +22,25 @@ warnings.filterwarnings("ignore")
 
 @dataclass
 class Args:
-    exp_name: str = ""
+    exp_name: str = "INAB"
     log_file: str = ""
     dataset: str = "INAB"
-    task: str = "dna"
+    task: str = "rna"
     lr: float = 1e-4
     criterion: str = "huber"
-    huber_threshold: float = 0.5
+    huber_threshold: float = 0.2
     d_model: int = 512
     seq_model: str = "mamba"
     num_seq_model_layers: int = 3
     num_egnn_layers: int = 4
     feats: str = "all"
-    order: str = "ME"
+    order: str = "seq_struc"
     mode: str = "regression"
-    gpu: int = 0
+    gpu: int = 7
     cross_validate: bool = False
     num_epochs: int = 100
-    L1: float = 0
     L2: float = 0
     gpus: list[int] = field(default_factory=list)
-    lr_step: int = 7
-    lr_gamma: float = 0.1
 
 
 def load_data(dataset, task):
@@ -79,9 +68,7 @@ def load_data(dataset, task):
                     data.append((input_data, label_data))
                 else:
                     with open(args.log_file, "a") as f:
-                        f.write(
-                            f">{prot}: Length mismatch, feature {len(input_data[1])} vs label {len(label_data)}\n"
-                        )
+                        f.write(f">{prot}: Length mismatch, feature {len(input_data[1])} vs label {len(label_data)}\n")
 
         return data
 
@@ -100,16 +87,15 @@ def load_data(dataset, task):
 
 def measure(outputs, labels, name):
     if config.model["mode"] == "regression":
-        mse = mean_squared_error(labels, outputs)
-        mae = mean_absolute_error(labels, outputs)
-        # ev_score=explained_variance_score(labels,outputs)
-        r2 = r2_score(labels, outputs)
+        mse = torchmetrics.functional.mean_squared_error(outputs, labels).item()
+        mae = torchmetrics.functional.mean_absolute_error(outputs, labels).item()
+        r2 = torchmetrics.functional.r2_score(outputs, labels).item()
         return {f"{name}_mse": mse, f"{name}_mae": mae, f"{name}_r2": r2}
     elif config.model["mode"] == "classification":
-        auroc = roc_auc_score(labels, outputs)
-        outputs_binary = np.where(outputs < 0.5, 0, 1)
-        mcc = matthews_corrcoef(labels, outputs_binary)
-        auprc = average_precision_score(labels, outputs)
+        auroc = torchmetrics.functional.auroc(outputs, labels.int()).item()
+        outputs_binary = (outputs >= 0.5).int()
+        mcc = torchmetrics.functional.matthews_corrcoef(outputs_binary, labels.int()).item()
+        auprc = torchmetrics.functional.average_precision(outputs, labels.int()).item()
         return {f"{name}_auroc": auroc, f"{name}_auprc": auprc, f"{name}_mcc": mcc}
     else:
         raise ValueError("Invalid mode. Expected 'regression' or 'classification'.")
@@ -137,7 +123,7 @@ def k_fold(data, split=0.2):
 def filter_feats(feats, type):
     """
     feat_dim
-    hmm(30): 0-29
+    hhm(30): 0-29
     pssm(20): 30-49
     ss(14): 50-63
     af(7): 64-70
@@ -147,11 +133,11 @@ def filter_feats(feats, type):
     """
     if type == "all":
         return feats
-    elif type == "no_hmm":
+    elif type == "no_hhm":
         return feats[:, 30:]
     elif type == "no_pssm":
         return np.concatenate((feats[:, :30], feats[:, 50:]), axis=1)
-    elif type == "no_hmm_pssm":
+    elif type == "no_hhm_pssm":
         return feats[:, 50:]
     elif type == "no_ss":
         return np.concatenate((feats[:, :50], feats[:, 64:]), axis=1)
@@ -175,7 +161,8 @@ def filter_feats(feats, type):
         return np.concatenate((feats[:, :71], feats[:, 1351:1863]), axis=1)
     elif type == "no_esm2_gearnet":
         return np.concatenate((feats[:, :71], feats[:, 1863:]), axis=1)
-
+    elif type == "no_hhm_pssm_esm2_gearnet":
+        return np.concatenate((feats[:, 50:71], feats[:, 1863:]), axis=1)
     else:
         raise ValueError("Invalid feats type.")
 
@@ -209,33 +196,20 @@ def train(model, device, criterion, optimizer, data, result_name):
         outputs = outputs.squeeze()
         labels = labels.squeeze()
 
-        # print(outputs.shape,labels.shape)
         loss = criterion(outputs, labels)
-        # loss=F.l1_loss(outputs,labels)
-
-        # loss,_,_=dilate_loss(outputs,labels.unsqueeze(0).unsqueeze(2),0.5,0.01,device)
 
         total_loss += loss.item()
         total_batches += 1
-
-        # l1_regularization = torch.tensor(0.).to(device)
-        # l2_regularization = torch.tensor(0.).to(device)
-        # for param in model.parameters():
-        #     l1_regularization += torch.norm(param, 1)
-        #     #l2_regularization += torch.norm(param, 2)
-        #     l2_regularization += torch.sum(param ** 2)
-
-        # loss += wandb.config['L1'] * l1_regularization + wandb.config['L2'] * l2_regularization
 
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
 
-        all_outputs.append(outputs.detach().float().cpu().numpy().ravel())
-        all_labels.append(labels.detach().float().cpu().numpy().ravel())
+        all_outputs.append(outputs.detach())
+        all_labels.append(labels.detach())
 
-    all_outputs = np.concatenate(all_outputs)
-    all_labels = np.concatenate(all_labels)
+    all_outputs = torch.cat(all_outputs)
+    all_labels = torch.cat(all_labels)
 
     avg_loss = total_loss / total_batches
     train_results = measure(all_outputs, all_labels, result_name)
@@ -272,11 +246,11 @@ def evaluate(model, device, data, result_name):
             outputs = outputs.squeeze()
             labels = labels.squeeze()
 
-            all_outputs.append(outputs.detach().float().cpu().numpy().ravel())
-            all_labels.append(labels.detach().float().cpu().numpy().ravel())
+            all_outputs.append(outputs.detach())
+            all_labels.append(labels.detach())
 
-        all_outputs = np.concatenate(all_outputs)
-        all_labels = np.concatenate(all_labels)
+        all_outputs = torch.cat(all_outputs)
+        all_labels = torch.cat(all_labels)
 
         results = measure(all_outputs, all_labels, result_name)
 
@@ -295,15 +269,13 @@ def main(tr_data, val_data=None, te_data=None):
         elif args.criterion == "huber":
             criterion = nn.SmoothL1Loss(beta=args.huber_threshold)
         else:
-            raise ValueError(
-                "Invalid criterion. Expected 'mse', 'huber', 'weightedMse'."
-            )
+            raise ValueError("Invalid criterion. Expected 'mse', 'huber', 'weightedMse'.")
     elif config.model["mode"] == "classification":
         criterion = nn.BCEWithLogitsLoss()
     else:
         raise ValueError("Invalid mode. Expected 'regression' or 'classification'.")
 
-    optimizer = Adam(model.parameters(), lr=args.lr, weight_decay=args.L2)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.L2)
     patience = 7
     best_val_results = {
         "val_mse": float("inf"),
@@ -322,8 +294,9 @@ def main(tr_data, val_data=None, te_data=None):
             "test_auprc": -float("inf"),
             "test_mcc": -float("inf"),
         }
-    best_weights = None
+    best_weights = model.state_dict()
     epochs_without_improvement = 0
+    model_saved = False
     # scheduler = StepLR(optimizer, step_size=args.lr_step, gamma=args.lr_gamma)
 
     print("Training...")
@@ -343,10 +316,9 @@ def main(tr_data, val_data=None, te_data=None):
                 epochs_without_improvement += 1
 
             if epochs_without_improvement >= patience:
-                print(
-                    f"\nEarly stopping at epoch {epoch}, best epoch is {epoch - patience}"
-                )
+                print(f"\nEarly stopping at epoch {epoch}, best epoch is {epoch - patience}")
                 print(f"Best val results: {best_val_results}")
+                model_saved = True
                 return best_val_results
         else:
             train_results = train(model, device, criterion, optimizer, tr_data, "train")
@@ -358,26 +330,42 @@ def main(tr_data, val_data=None, te_data=None):
             if config.model["mode"] == "regression":
                 if results["test_r2"] > best_test_results["test_r2"]:
                     best_test_results = test_results
-                    # best_weights = deepcopy(model.state_dict())
+                    best_weights = deepcopy(model.state_dict())
                     epochs_without_improvement = 0
                 else:
                     epochs_without_improvement += 1
             elif config.model["mode"] == "classification":
                 if results["test_auroc"] > best_test_results["test_auroc"]:
                     best_test_results = test_results
-                    # best_weights = deepcopy(model.state_dict())
+                    best_weights = deepcopy(model.state_dict())
                     epochs_without_improvement = 0
                 else:
                     epochs_without_improvement += 1
 
             if epochs_without_improvement >= patience:
-                print(
-                    f"\nEarly stopping at epoch {epoch}, best epoch is {epoch - patience}"
-                )
+                print(f"\nEarly stopping at epoch {epoch}, best epoch is {epoch - patience}")
                 print(f"Best test results: {best_test_results}")
+                torch.save(
+                    best_weights,
+                    os.path.join(
+                        config.base_dir,
+                        "model_parameters",
+                        f"{args.exp_name}.pth",
+                    ),
+                )
+                model_saved = True
                 return best_test_results
 
-        # scheduler.step()
+    if not model_saved:
+        print(f"\nSaving model at epoch {epoch}")
+        torch.save(
+            best_weights,
+            os.path.join(
+                config.base_dir,
+                "model_parameters",
+                f"{args.exp_name}.pth",
+            ),
+        )
 
 
 if __name__ == "__main__":
@@ -391,15 +379,16 @@ if __name__ == "__main__":
     config.model["mode"] = args.mode
 
     args.exp_name += f"_{args.dataset}_{args.task}"
-    args.log_file = os.path.join(
-        config.base_dir,
-        "log",
-        args.exp_name + f"_{time.strftime('%Y%m%d%H%M%S', time.localtime())}.txt",
-    )
+    if not args.log_file:
+        args.log_file = os.path.join(
+            config.base_dir,
+            "log",
+            args.exp_name + f"_{time.strftime('%Y%m%d%H%M%S', time.localtime())}.txt",
+        )
 
     tr_data, te_data = load_data(args.dataset, args.task)
 
-    random.seed(76)
+    random.seed(200176)
     random.shuffle(tr_data)
     random.shuffle(te_data)
 

@@ -13,5 +13,3 @@ model_parameters/*
 assist_scripts
 
 __pycache__/
-model/__pycache__/
-*.pyc
